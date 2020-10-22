@@ -10901,3 +10901,14 @@ a.text-dark:focus {
   }
 }
 
+/* post mom styling */
+.post-mom{
+  -webkit-box-shadow: -2px 7px 21px -1px rgba(138,138,138,1);
+  -moz-box-shadow: -2px 7px 21px -1px rgba(138,138,138,1);
+  box-shadow: -2px 7px 21px -1px rgba(138,138,138,1);
+
+}
+.tag-box{
+  padding-left: 10%;
+}
+

@@ -86,7 +86,7 @@
 
         <main class="container my-4">
             <div class="row">
-                <div class="col-6">
+                <div class="col-3 col-lg-3 col-md-3">
                     <div class="side-menu">
                         <ul>
                             <li>
@@ -101,7 +101,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-9 col-md-9 col-lg-9">
                     @if (session()->has('message'))
                      <div class="alert alert-success">
                             {{ session('message') }}
