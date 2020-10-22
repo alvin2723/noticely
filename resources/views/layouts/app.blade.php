@@ -86,20 +86,18 @@
 
         <main class="container my-4">
             <div class="row">
-                <div class="col-3 col-lg-3 col-md-3">
-                    <div class="side-menu">
-                        <ul>
-                            <li>
-                                sdfsdf
-                            </li>
-                            <li>
-                                sdf
-                            </li>
-                            <li>
-                                sdf
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-3 col-lg-3 col-md-3 side-menu">
+                    <ul>
+                        <li>
+                            sdfsdf
+                        </li>
+                        <li>
+                            df
+                        </li>
+                        <li>
+                            sdf
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-9 col-md-9 col-lg-9">
                     @if (session()->has('message'))
