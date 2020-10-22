@@ -4518,6 +4518,7 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
+  margin-left: 5rem;
   margin-right: 1rem;
   font-size: 1.125rem;
   line-height: inherit;
@@ -10899,5 +10900,17 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+/* post mom styling */
+.post-mom{
+  background-color: white;
+  -webkit-box-shadow: -2px 7px 21px -1px rgba(138,138,138,1);
+  -moz-box-shadow: -2px 7px 21px -1px rgba(138,138,138,1);
+  box-shadow: -2px 7px 21px -1px rgba(138,138,138,1);
+
+}
+.tag-box{
+  padding-left: 10%;
 }
 

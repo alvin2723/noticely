@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('post.index') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -86,20 +86,22 @@
 
         <main class="container my-4">
             <div class="row">
-                <div class="col-3 col-lg-3 col-md-3 side-menu">
-                    <ul>
-                        <li>
-                            sdfsdf
-                        </li>
-                        <li>
-                            df
-                        </li>
-                        <li>
-                            sdf
-                        </li>
-                    </ul>
+                <div class="col-6">
+                    <div class="side-menu">
+                        <ul>
+                            <li>
+                                sdfsdf
+                            </li>
+                            <li>
+                                sdf
+                            </li>
+                            <li>
+                                sdf
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-9 col-md-9 col-lg-9">
+                {{-- <div class="col-6">
                     @if (session()->has('message'))
                      <div class="alert alert-success">
                             {{ session('message') }}
@@ -107,7 +109,7 @@
                     @else
                         @yield('content')
                      @endif
-                </div>
+                </div> --}}
             </div>
         </main>
     </div>
