@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white  p-3 mb-5  navbar-rounded shadow">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('post.index') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -86,7 +86,7 @@
 
         <main class="container my-4">
             <div class="row">
-                <div class="col-3 col-lg-3 col-md-3 side-menu">
+                <div class="col-2 side-menu">
                     <ul>
                         <li>
                             sdfsdf
@@ -99,7 +99,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-9 col-md-9 col-lg-9">
+                <div class="col-10">
                     @if (session()->has('message'))
                      <div class="alert alert-success">
                             {{ session('message') }}
