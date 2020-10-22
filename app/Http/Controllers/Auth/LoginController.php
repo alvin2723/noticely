@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -37,4 +42,30 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    // protected function sendLoginResponse(Request $request)
+    // {
+    //     $request->session()->regenerate();
+
+
+    //     $this->clearLoginAttempts($request);
+
+    //     if ($response = $this->authenticated($request, $this->guard()->user())) {
+    //         return $response;
+    //     }
+
+    //     $user = Auth::user();
+    //     if($user->hasRole('Staff'))
+    //     {
+    //         return $request->wantsJson()
+    //         ? new Response('', 204)
+    //         : redirect()->intended($this->redirectPath());
+            
+    //     }
+    //     else if($user->hasRole('Admin')){
+    //         return $request->wantsJson()
+    //         ? new Response('', 204)
+    //         : redirect()->intended('/dashboard');
+    //     }
+     
+    // }
 }

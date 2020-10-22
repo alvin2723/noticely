@@ -101,7 +101,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-6">
+                {{-- <div class="col-6">
                     @if (session()->has('message'))
                      <div class="alert alert-success">
                             {{ session('message') }}
@@ -109,7 +109,7 @@
                     @else
                         @yield('content')
                      @endif
-                </div>
+                </div> --}}
             </div>
         </main>
     </div>
