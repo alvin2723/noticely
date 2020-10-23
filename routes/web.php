@@ -21,8 +21,8 @@ Auth::routes();
 Route::group(['middleware' => ['auth','role:Staff']],function(){
 
     Route::livewire('/', 'post.index')->name('post.index');
-    Route::livewire('/admin', 'post.admin_index')->name('post.admin');
     Route::livewire('/detail-mom', 'post.detailmom')->name('post.detail-mom');
+    Route::livewire('/create-mom', 'post.create-mom')->name('post.create-mom');
 });
 Route::group(['middleware' => ['auth','role:Admin']], function(){
     Route::get('/dashboard', 'AdminController@index')->name('admin.home');
