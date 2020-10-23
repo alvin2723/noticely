@@ -16,7 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" /> --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -83,32 +83,21 @@
                 </div>
             </div>
         </nav>
-
-        <main class="container my-4">
-            <div class="row">
-                <div class="col-2 side-menu">
-                    <ul>
-                        <li>
-                            sdfsdf
-                        </li>
-                        <li>
-                            df
-                        </li>
-                        <li>
-                            sdf
-                        </li>
-                    </ul>
+        <div class="side-menu">
+            
+            <a href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i>HOME</a>
+            <a href="#about"><i class="fas fa-user fa-1x" style="margin-right: 10px"></i>DRAFT MOM</a>
+                
+            <a href="#about"><i class="fas fa-user" style="margin-right: 10px"></i>DIVISI</a>
+        </div>
+        <main class="container main">
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
                 </div>
-                <div class="col-10">
-                    @if (session()->has('message'))
-                     <div class="alert alert-success">
-                            {{ session('message') }}
-                    </div>
-                    @else
-                        @yield('content')
-                     @endif
-                </div>
-            </div>
+                @else
+                    @yield('content')
+                @endif
         </main>
     </div>
     @livewireScripts

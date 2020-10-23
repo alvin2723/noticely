@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome": "^1.1.8",
+        "@fortawesome/fontawesome-free": "^5.15.1",
         "free": "^1.0.0",
         "node-sass": "^4.14.1",
         "turbolinks": "^5.2.0"
