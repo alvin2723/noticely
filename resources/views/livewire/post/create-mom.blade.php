@@ -38,6 +38,13 @@
                     <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="decision_made" placeholder="Enter Decision..."></textarea>
                         @error('decision_made') <span class="text-danger">{{ $message }}</span>@enderror
                 </div>
+                
+                <div class="form-group">
+                    <label for="exampleFormControlInput6">Attendees:</label>
+
+                    {{-- <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="attendees" placeholder="Enter Decision..."></textarea> --}}
+                </div> 
+                
                 <button wire:click.prevent="store()" class="btn btn-success">Create</button>
             </form>
             

@@ -86,7 +86,7 @@
                 </div>
                 @else
                     @yield('content')
-                @endif
+            @endif
         </main>
     </div>
     @livewireScripts

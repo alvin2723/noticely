@@ -1,4 +1,5 @@
 <div class="row"  style="margin: 0">
+
     {{-- Nothing in the world is as soft and yielding as water. --}}
     <div class="col-7">
         <div class="card rounded shadow">

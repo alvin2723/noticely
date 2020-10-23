@@ -18,7 +18,7 @@ class MinuteOfMeeting extends Model
        'start_mom',
        'end_mom',
        'objective_mom',
-       'decision_made'
-
+       'decision_made',
+       'status'
    ];
 }
