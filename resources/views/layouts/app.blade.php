@@ -76,22 +76,25 @@
                 </div>
             </div>
         </nav>
-        <div class="side-menu">
+        <div class="app-container">
+            <div class="side-menu">
             
-            <a href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i>HOME</a>
-            <a href="#about"><i class="fas fa-user fa-1x" style="margin-right: 10px"></i>DRAFT MOM</a>
-                
-            <a href="#about"><i class="fas fa-user" style="margin-right: 10px"></i>DIVISI</a>
+                <a href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i>HOME</a>
+                <a href="{{ route('post.draft-mom') }}"><i class="fas fa-user fa-1x" style="margin-right: 10px"></i>DRAFT MOM</a>
+                    
+                <a href="{{ route('post.divisi') }}"><i class="fas fa-user" style="margin-right: 10px"></i>DIVISI</a>
+            </div>
+            <main class="container main">
+                @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                    @else
+                        @yield('content')
+                @endif
+            </main>
         </div>
-        <main class="container main">
-            @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-                @else
-                    @yield('content')
-            @endif
-        </main>
+       
     </div>
     @livewireScripts
     <script src="{{ mix('js/app.js') }}"></script>

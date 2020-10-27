@@ -17704,7 +17704,7 @@ a.text-dark:focus {
 /* side navbar */
 .side-menu {
     height: 100%;
-    width: 9%;
+
     position: fixed;
     z-index: 1;
     top: 12%;
@@ -17720,7 +17720,7 @@ a.text-dark:focus {
     text-decoration: none;
     font-size: 18px;
     color: #818181;
-    display: inline-block;
+    display: block;
     width: 100%;
 
 }
@@ -17743,9 +17743,8 @@ a.text-dark:focus {
 }
 
 .tag {
-    border-width: 5%;
     border-top: 1px solid rgba(128, 128, 128, 0.274);
-    padding: 10px 0;
+    padding: 20px 0 0 0;
 }
 
 .user-image {
@@ -17753,8 +17752,177 @@ a.text-dark:focus {
     justify-content: start;
 }
 
+.btn-detail {
+    transition: all 0.5s;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px 0 0 0;
+}
+
+.btn-detail span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn-detail span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btn-detail:hover span {
+    padding-right: 25px;
+}
+
+.btn-detail:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
 /* detail mom */
 .blue-color {
     background-color: var(--blue);
     color: white;
+}
+
+/* divisi page*/
+.app-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+.one-person {
+    background-color: #f7f5ec;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    margin: 0px 25px;
+    padding: 30px 50px 30px 50px;
+    width: 30%;
+}
+
+.one-person .pic {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    z-index: 1;
+    position: relative;
+}
+
+.one-person .pic::before {
+    content: "";
+    width: 100%;
+    height: 0;
+    border-radius: 50%;
+    background: #1785eb;
+    position: absolute;
+    bottom: 135%;
+    right: 0;
+    left: 0;
+    opacity: 0.2;
+    transform: scale(3);
+    transition: all 0.3s linear 0s;
+}
+
+.one-person:hover .pic::before {
+    height: 100%;
+}
+
+.one-person .pic:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #1785eb;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.one-person .pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
+}
+
+.one-person:hover .pic img {
+    box-shadow: 0 0 0 14px #f7f5ec;
+    transform: scale(0.7);
+}
+
+.one-person .division-content {
+    margin-bottom: 50px;
+}
+
+.one-person .person-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4e5052;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+
+}
+
+.one-person .person-title {
+    display: block;
+    font-size: 15px;
+    color: #4e5052;
+}
+
+.one-person .social {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #1785eb;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    transition: all 0.5s ease 0s;
+}
+
+.one-person:hover .social {
+
+    bottom: 0;
+}
+
+.one-person .social li {
+    display: inline-block;
+}
+
+.one-person .social li a i {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    font-size: 17px;
+    color: white;
+    transition: all 0.3s ease 0s;
+
+}
+
+.one-person .social li a li:hover {
+    color: #1785eb;
+    background: #f7f5ec;
+}
+
+@media (max-width:720px) {
+    .all-division {
+        flex-direction: column;
+    }
+
+    .one-person {
+        width: 80%;
+        margin-top: 30px;
+    }
 }

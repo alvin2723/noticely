@@ -51,7 +51,11 @@
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" wire:model="attendees">
+                                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.data">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                          Default checkbox
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.saa">
                                         <label class="form-check-label" for="defaultCheck1">
                                           Default checkbox
                                         </label>
