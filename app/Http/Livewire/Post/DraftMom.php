@@ -3,11 +3,15 @@
 namespace App\Http\Livewire\Post;
 
 use Livewire\Component;
+use App\MinuteOfMeeting;
 
 class DraftMom extends Component
 {
     public function render()
     {
-        return view('livewire.post.draft-mom');
+        $post = MinuteOfMeeting::where('status', '=', '0')->get();
+        return view('livewire.post.draft-mom', [
+            'posts' => $post
+        ]);
     }
 }

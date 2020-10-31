@@ -91,7 +91,16 @@
         
     </div>
     
-  
+    <div class="col-lg-4 col-md-5 right-box">
+        <div class="card p-3 text-danger">
+            <div class="card-body">
+                <h4>Notes For Change :</h4>
+                <p class="py-2" style="font-size: 16px">sdfsdfsfsdfsdf</p>
+                <a href=""></a>
+            </div>
+        </div>
+        
+    </div>
     {{-- <div class="col-lg-4 col-md-5 right-box">
         <div class="card p-3">
             <div class="card-body">

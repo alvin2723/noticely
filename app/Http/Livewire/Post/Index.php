@@ -10,7 +10,9 @@ class Index extends Component
     public $post;
     public function render()
     {
-        $this->post = MinuteOfMeeting::all();
-        return view('livewire.post.index');
+        $post = MinuteOfMeeting::where('status', '=', '1')->get();
+        return view('livewire.post.index', [
+            'posts' => $post
+        ]);
     }
 }

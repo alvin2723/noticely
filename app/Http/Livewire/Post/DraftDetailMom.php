@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Post;
 use Livewire\Component;
 use App\MinuteOfMeeting;
 
-class Detailmom extends Component
+class DraftDetailMom extends Component
 {
     public $data;
     public function mount($id_mom)
@@ -15,7 +15,7 @@ class Detailmom extends Component
     public function render()
     {
 
-        return view('livewire.post.detailmom', [
+        return view('livewire.post.draft-detail-mom', [
             'data' => $this->data
         ]);
     }
