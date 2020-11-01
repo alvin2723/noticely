@@ -31,7 +31,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+
+    // protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -41,6 +42,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    protected function authenticated(Request $request)
+    {
+        if ($request->user()->hasAnyRole(['Admin'])) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        return redirect()->route('post.index');
     }
     // protected function sendLoginResponse(Request $request)
     // {
@@ -59,13 +68,13 @@ class LoginController extends Controller
     //         return $request->wantsJson()
     //         ? new Response('', 204)
     //         : redirect()->intended($this->redirectPath());
-            
+
     //     }
     //     else if($user->hasRole('Admin')){
     //         return $request->wantsJson()
     //         ? new Response('', 204)
     //         : redirect()->intended('/dashboard');
     //     }
-     
+
     // }
 }

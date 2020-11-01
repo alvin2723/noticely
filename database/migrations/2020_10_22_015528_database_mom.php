@@ -25,12 +25,12 @@ class DatabaseMom extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        Schema::create('user_mom', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->unsignedBigInteger('id_mom');
-            $table->foreign('id_mom')->references('id')->on('mom');
-        });
+        // Schema::create('user_mom', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('id_user');
+        //     $table->foreign('id_user')->references('id')->on('users');
+        //     $table->unsignedBigInteger('id_mom');
+        //     $table->foreign('id_mom')->references('id')->on('mom');
+        // });
     }
     /**
      * Reverse the migrations.
@@ -39,8 +39,7 @@ class DatabaseMom extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('user_mom');
-
+        Schema::dropIfExists('mom');
+        // Schema::dropIfExists('user_mom');
     }
 }

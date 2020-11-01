@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Auth::routes();
-Route::group(['middleware' => ['auth', 'role:Staff']], function () {
+Route::group(['middleware' => ['auth', 'role:Staff|Supervisor|Manager']], function () {
 
     Route::livewire('/', 'post.index')->name('post.index');
     Route::livewire('/detail-mom/{id_mom}', 'post.detailmom')->name('post.detail-mom');
@@ -29,6 +29,6 @@ Route::group(['middleware' => ['auth', 'role:Staff']], function () {
     Route::livewire('/division', 'post.divisi')->name('post.divisi');
 });
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {
-    Route::get('/dashboard', 'AdminController@index')->name('admin.home');
+    Route::livewire('/dashboard', 'admin.dashboard')->name('admin.dashboard');
     // Route::get('/home', 'HomeController@index')->name('home');
 });
