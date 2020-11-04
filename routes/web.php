@@ -30,5 +30,12 @@ Route::group(['middleware' => ['auth', 'role:Staff|Supervisor|Manager']], functi
 });
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::livewire('/dashboard', 'admin.dashboard')->name('admin.dashboard');
+    Route::livewire('/data-staff', 'admin.users')->name('admin.users');
+    Route::livewire('/data-manager', 'admin.users-manager')->name('admin.users-manager');
+    Route::livewire('/data-supervisor', 'admin.users-supervisor')->name('admin.users-supervisor');
+    Route::livewire('/create-user', 'admin.create-user')->name('admin.create-user');
+    Route::livewire('/edit/user/{id}', 'admin.edit-user')->name('admin.edit-user');
+    Route::livewire('/data-mom', 'admin.data-mom')->name('admin.data-mom');
+    Route::livewire('/view/mom/{id}', 'admin.view-mom')->name('admin.view-mom');
     // Route::get('/home', 'HomeController@index')->name('home');
 });

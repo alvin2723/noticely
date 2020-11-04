@@ -19,7 +19,7 @@
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3 class="text-center"></h3>
-                        <p class="text-center">My Product</p>
+                        <p class="text-center">Minute Of Meeting</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
@@ -27,10 +27,6 @@
                     <a href="/admin_master/ProductShow" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-        <!-- ./col -->
-        
-        <!-- ./col -->
-        
         <!-- ./col -->
       </div>
     </div>

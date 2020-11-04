@@ -15,7 +15,10 @@
   <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
   <link rel="stylesheet" href="{{ asset('AdminStyle/css/dataTables.bootstrap4.css') }}">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+
+  @livewireStyles
   <title>@yield('title')</title>
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -81,39 +84,42 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-header">MENU</li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('admin.dashboard')}}" class="nav-link">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             HOME
                         </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-users"></i>
-                        <p>
-                            USERS
-                        </p>
-                        </a>
-                    </li>
                     <li class="nav-item dropdown d-sm-block ">
                         <a  class="nav-link accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
                         
-                        <span class="sidebar-icon"><i class="nav-icon fa fa-book"></i></span>
-                            <span class="sidebar-title">PRODUCTS<i class="fa fa-angle-down" style="text-align: right"></i></span>
+                        <span class="sidebar-icon"><i class="nav-icon fa fa-users"></i></span>
+                            <p>USERS <i class="fa fa-angle-down" style="text-align: right"></i></p>
                             <b class="caret"></b>
                         </a>
                         <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu" style="list-style-type: none;">
-                            <li style="padding: 1rem 0 1rem 0;"><a href="/admin_master/ProductShow"><i class="fas fa-ring"></i>
-                            ALL PRODUCT</a></li>
-                            <li style="padding: 0 0 1rem 0;"><a href="/admin_master/CustomizeProduct"><i class="nav-icon fas fa-pencil-ruler"></i>CUSTOMIZE PRODUCT</a></li>
+                            <li style="padding: 1rem 0 1rem 0;"><a href="{{route('admin.users')}}"><i class="nav-icon fas fa-male"></i>
+                            ALL STAFF</a></li>
+                            <li style="padding: 0 0 1rem 0;"><a href="{{route('admin.users-supervisor')}}"><i class="nav-icon fas fa-user"></i>ALL SUPERVISOR</a></li>
+                            <li style="padding: 0 0 1rem 0;"><a href="{{route('admin.users-manager')}}"><i class="nav-icon fas fa-user-tie"></i>
+                            </i>ALL MANAGER</a></li>
                         </ul>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a href="{{route('admin.data-mom')}}" class="nav-link">
+                            <i class="nav-icon far fa-file-alt"></i>
+                            <p>
+                                MINUTE OF MEETING
+                            </p>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link">
-                        <i class="nav-icon fa fa-truck"></i>
+                        <i class="nav-icon fas fa-user-friends"></i>
                         <p>
-                            SHIPMENT
+                            DIVISI
                         </p>
                         </a>
                     </li>
@@ -162,23 +168,21 @@
     </div>
 
 
-<script src="/AdminStyle/js/jquery.min.js"></script>
-<script src="/AdminStyle/js/bootstrap.bundle.min.js"></script>
-<script src="/AdminStyle/js/adminlte.min.js"></script>
-<script src="/AdminStyle/js/demo.js"></script>
-<script src="/AdminStyle/datatables/jquery.dataTables.min.js"></script>
-<script src="/AdminStyle/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="/AdminStyle/daterangepicker/daterangepicker.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"> </script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"> </script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"> </script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"> </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"> </script>
-
-@stack('scriptsadminmaster')
-
-@stack('scriptsadminusers')
+    @livewireScripts
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="/AdminStyle/js/jquery.min.js"></script>
+    <script src="/AdminStyle/js/bootstrap.bundle.min.js"></script>
+    <script src="/AdminStyle/js/adminlte.min.js"></script>
+    <script src="/AdminStyle/js/demo.js"></script>
+    <script src="/AdminStyle/datatables/jquery.dataTables.min.js"></script>
+    <script src="/AdminStyle/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/AdminStyle/daterangepicker/daterangepicker.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"> </script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"> </script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"> </script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"> </script>
 
 </body>
 </html>
