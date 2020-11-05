@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
   <link rel="stylesheet" href="{{ asset('AdminStyle/css/dataTables.bootstrap4.css') }}">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
-
+  <script src="{{ asset('js/app.js') }}"></script>
   @livewireStyles
   <title>@yield('title')</title>
   
@@ -34,37 +34,19 @@
         <!-- Messages Dropdown Menu -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user-circle mr-3"></i>
+                                
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <i class="fa fa-user-circle mr-3"></i>{{ Auth::user()->name }} <span class="caret"></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item">
-                    <!-- Message Start -->
-                    <div class="media">
-                        <div class="media-body">
-                            <p class="text-sm text-muted">
-                                <i class="fa fa-pencil-square-o mr-1"> </i>PROFILE -
-                                {{ auth()->user()->name }}
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Message End -->
-                </a>
-                <div class="dropdown-divider"></div>
-                    <!-- Message Start -->
-                    <div class="media">
-                        <div class="media-body">
-                            <p class="text-sm text-muted">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-outdent mr-1"></i> LOGOUT </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Message End -->
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </li>
         </ul>
@@ -214,6 +196,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
 <body>
@@ -247,8 +230,9 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <i class="fa fa-user-circle mr-3"></i> {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"

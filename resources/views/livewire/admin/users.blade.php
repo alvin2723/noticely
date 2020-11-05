@@ -51,7 +51,7 @@
                                                 <a href="{{route('admin.edit-user', $user->id)}}" class="btn-sm btn-block btn-warning">Update</a>
                                             </div>
                                             <div class="p-2">
-                                                <button wire:click="destroy({{ $user->id  }})" class="btn-sm btn-block btn-danger">Delete</button>
+                                                <button wire:click="destroy({{$user->id}})" class="btn-sm btn-block btn-danger">Delete</button>
                                             </div>
                                             
                                         </td>

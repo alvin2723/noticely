@@ -12,9 +12,10 @@ class Users extends Component
     public function destroy($userId)
     {
 
-        $user = Users::find($userId);
+        $user = User::find($userId);
 
         if ($user) {
+            DB::table('staff')->where('id_users', $user->id)->delete();
             $user->delete();
         }
 

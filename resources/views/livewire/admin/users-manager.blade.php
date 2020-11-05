@@ -1,18 +1,19 @@
-<section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Manager Report</h1>
+<div>
+  <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Manager Report</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin_master">Home</a></li>
+              <li class="breadcrumb-item active">Data Manager</li>
+            </ol>
+          </div>
         </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/admin_master">Home</a></li>
-            <li class="breadcrumb-item active">Data Manager</li>
-          </ol>
-        </div>
-      </div>
-    </div><!-- /.container-fluid -->
-  </section>
+      </div><!-- /.container-fluid -->
+  </div>
   <div class="row">
     <div class="col-12">
       <div class="card mt-2">
@@ -45,10 +46,10 @@
                         <td  class="py-5">{{$user->phone}}</td>
                         <td>
                             <div class="p-2 ">
-                                <button wire:click="update({{ $user->id  }})" class="btn-sm btn-block btn-warning">Update</button>
+                                <a href="{{route('admin.edit-user', $user->id)}}" class="btn-sm btn-block btn-warning">Update</a>
                             </div>
                             <div class="p-2">
-                                <button wire:click="delete({{ $user->id  }})" class="btn-sm btn-block btn-danger">Delete</button>
+                              <button wire:click="destroy({{$user->id}})" class="btn-sm btn-block btn-danger">Delete</button>
                             </div>
                             
                         </td>
@@ -62,3 +63,4 @@
       </div>
     </div>
   </div>
+</div>
