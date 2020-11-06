@@ -1,4 +1,4 @@
-<div class="row"  style="margin: 0">
+<div class="row flex-column-reverse flex-md-row"  style="margin: 0">
     <div class="col-lg-8 col-md-7">
         <div class="card rounded shadow">
             <div class="card-body p-5">
@@ -92,11 +92,33 @@
     </div>
     
     <div class="col-lg-4 col-md-5 right-box">
-        <div class="card p-3 text-danger">
+        <div class="card rounded shadow">
+            <div class="card-header blue-color">
+                @role('Staff')
+                    @if($data->status == '1')
+                        <h4  class="text-center">Notes For Change :</h4>
+                     @endif
+                @else
+                     <h4 class="text-center">Will You Approve This MOM?</h4>
+                 @endrole
+            </div>
             <div class="card-body">
-                <h4>Notes For Change :</h4>
-                <p class="py-2" style="font-size: 16px">sdfsdfsfsdfsdf</p>
-                <a href=""></a>
+                @role('Staff')
+                    @if($data->status == '1')
+                        <p class="py-2" style="font-size: 16px">sdfsdfsfsdfsdf</p>
+                        <a href="" type="button" class="btn btn-block btn-lg btn-success">Edit MOM</a>
+                    @endif
+                @else
+                    <div class="row">
+                        <div class="col-6 p-2">
+                            <a href="" type="button" class="btn btn-block btn-lg btn-success">APPROVE</a>
+                        </div>
+                        <div class="col-6 p-2">
+                            <a href="" type="button" class="btn btn-block btn-lg btn-secondary">DECLINE</a>
+                        </div>
+                    </div>
+                
+                @endrole
             </div>
         </div>
         

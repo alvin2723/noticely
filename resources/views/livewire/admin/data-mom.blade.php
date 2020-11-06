@@ -41,17 +41,20 @@
                                     <td  class="py-5">{{$post->start_mom}}</td>
                                     <td  class="py-5">{{$post->end_mom}}</td>
                                     <td>
-                                        @if($post->status == '2')
+                                        @if($post->status == '3')
                                         <label class="badge badge-success">
                                             approved
                                         </label>
-                                        
+                                        @elseif($post->status == '2')
+                                        <label class="badge badge-primary">
+                                            waiting for last approval
+                                        </label>
                                         @elseif($post->status == '1')
-                                        <label class="badge badge-warning">
-                                            waiting on approval
+                                        <label class="badge badge-danger">
+                                            not approved
                                         </label>
                                         @else
-                                        <label class="badge badge-danger">
+                                        <label class="badge badge-warning">
                                             pending
                                         </label>
                                         @endif
