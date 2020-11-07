@@ -1,31 +1,31 @@
 <div class="row flex-column-reverse flex-md-row"  style="margin: 0">
 
     {{-- Nothing in the world is as soft and yielding as water. --}}
-    <div class="col-lg-8 col-md-7  col-sm-12 ">
+    <div class="col-lg-8 col-md-7 col-sm-12" style="padding:0; margin:0">
         @foreach($posts as $post)
-        <div class="card rounded shadow">
-            <div class="card-body p-5">
+        <div class="card rounded shadow p-5">
+            <div class="card-body">
                 <div class="row">
                    
                         @role('Staff')
                             @if($post->status == '0')
-                                <label class="badge text-warning col-md-2 py-5">
+                                <div class="col-md-2 py-5 text-warning">
                                     pending
-                                </label>
+                                </div>
                             @elseif($post->status=='1')
-                                <label class="badge text-danger col-md-2 py-5">
+                                <div class="col-md-2 py-5 text-danger">
                                     Not Approved
-                                </label>
+                                </div>
                             @endif
                         @elserole('Supervisor')
-                            <label class="badge text-warning text-center col-md-2 py-5">
+                            <div class="col-md-2 py-5 text-warning">
                                 Waiting for <br>
                                 Supervisor Approval
-                            </label>
+                            </div>
                         @else
-                            <label class="badge text-primary col-md-2 py-5">
+                            <div class="col-md-2 py-5 text-primary">
                                 Waiting for Manager Approval
-                            </label>
+                            </div>
                         @endrole
                     
                     <div class="col-md-10 col-sm-12">

@@ -1,6 +1,6 @@
 <div>
-    <div class="card rounded shadow" style="margin-right:22%">
-        <div class="card-body p-5">
+    <div class="card rounded shadow p-3">
+        <div class="card-body">
             <form>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Title Minute of Meeting:</label>
@@ -11,9 +11,6 @@
                     <label for="exampleFormControlInput2">Date Minute of Meeting:</label>
                     <input type="date" class="form-control" id="exampleFormControlInput2" placeholder="12/07/2020" wire:model="date_mom">
                     @error('date_mom') <span class="text-danger">{{ $message }}</span>@enderror
-                </div>
-                <div class="form-group">
-                    
                 </div>
                 <div class="form-group form-row">
                     <div class="col">
@@ -42,27 +39,34 @@
                 <div class="form-group">
                     <label for="exampleFormControlInput6">Attendees:</label><br>
                     <div class="accordion" id="accordionExample">
+                        @foreach($division as $divisi)
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h2 class="mb-0">
-                                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">1. What is HTML?</button>									
+                                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">{{$divisi->division_name}}</button>									
                                 </h2>
                             </div>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.data">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                          Default checkbox
-                                        </label>
-                                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.saa">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                          Default checkbox
-                                        </label>
-                                    </div>
+                                    @foreach($user as $item)
+                                        @if($item->division_id == $divisi->id)
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.{{$item->id_staff}}">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                {{$item->name}}
+                                                </label>
+                                                {{-- <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.saa">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                Default checkbox
+                                                </label> --}}
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <div class="card">
                             <div class="card-header" id="headingTwo">
                                 <h2 class="mb-0">

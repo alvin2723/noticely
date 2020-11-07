@@ -252,14 +252,17 @@
         </nav>
         <div class="app-container">
             <div class="side-menu">
-                @hasanyrole('Staff|Supervisor|Manager')
-                    <a href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i>HOME</a>
-                    <a href="{{ route('post.draft-mom') }}"><i class="fas fa-user fa-1x" style="margin-right: 10px"></i>DRAFT MOM</a>
+                <div class="side-content">
+                    @hasanyrole('Staff|Supervisor|Manager')
+                    <a  href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i>HOME</a>
+                    <a href="{{ route('post.draft-mom') }}"><i class="fas fa-user fa-1x side-link" style="margin-right: 10px"></i>DRAFT MOM</a>
                         
-                    <a href="{{ route('post.divisi') }}"><i class="fas fa-user" style="margin-right: 10px"></i>DIVISI</a>
+                    <a   href="{{ route('post.divisi') }}"><i class="fas fa-user" style="margin-right: 10px"></i>DIVISI</a>
                 @else
-                    <a href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i>HOME</a>
+                    <a  href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i>HOME</a>
                 @endhasanyrole
+                </div>
+               
 
             </div>
             <main class="container main">
