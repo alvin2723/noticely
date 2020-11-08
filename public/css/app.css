@@ -8808,8 +8808,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #3490dc;
+    color: #000;
+
     border-color: #3490dc;
 }
 
@@ -10662,7 +10662,7 @@ input[type="button"].btn-block {
     display: inline-block;
     padding-top: 0.32rem;
     padding-bottom: 0.32rem;
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-right: 1rem;
     font-size: 1.125rem;
     line-height: inherit;

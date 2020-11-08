@@ -34,8 +34,8 @@
   
     <div class="col-lg-4 col-md-5 col-sm-12 right-box">
         @role('Staff')
-        <a href="{{route('post.create-mom')}}" type="button" class="btn btn-primary btn-lg px-4"><i class="fas fa-plus" style="margin-right: 10px"></i>
-            Create MoM</a>
+        <a href="{{route('post.create-mom')}}" type="button" class="btn btn-primary btn-lg px-4 btn-create">
+           <span> CREATE MOM</span></a>
         @endrole
     </div>
     
