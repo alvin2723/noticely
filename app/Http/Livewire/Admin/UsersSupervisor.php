@@ -15,14 +15,21 @@ class UsersSupervisor extends Component
 
 
         if ($user) {
-            DB::table('supervisor')->where('id_users', $user->id)->delete();
-            $user->delete();
+            $supervisor = DB::table('supervisor')->where('id_users', $user->id)->first();
+            $staff = DB::table('staff')->where('id_supervisor', $supervisor->id_supervisor)->get();
+            if ($staff) {
+                session()->flash('message', 'Staff memerlukan Supevisor ini');
+            } else {
+                DB::table('supervisor')->where('id_users', $user->id)->delete();
+                $user->delete();
+                session()->flash('message', 'Data Berhasil Dihapus.');
+            }
         }
         //flash message
-        session()->flash('message', 'Data Berhasil Dihapus.');
+
 
         //redirect
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users-supervisor');
     }
     public function render()
     {

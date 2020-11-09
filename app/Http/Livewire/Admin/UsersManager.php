@@ -14,16 +14,23 @@ class UsersManager extends Component
 
         $user = User::find($userId);
 
+
         if ($user) {
-            DB::table('manager')->where('id_users', $user->id)->delete();
-            $user->delete();
+            $manager = DB::table('manager')->where('id_users', $user->id)->first();
+            $supervisor = DB::table('supervisor')->where('id_manager', $manager->id_manager)->get();
+            if ($supervisor) {
+                session()->flash('message', 'Supervisor memerlukan Manager ini');
+            } else {
+                DB::table('manager')->where('id_users', $user->id)->delete();
+                $user->delete();
+                session()->flash('message', 'Data Berhasil Dihapus.');
+            }
         }
 
         //flash message
-        session()->flash('message', 'Data Berhasil Dihapus.');
 
         //redirect
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users-manager');
     }
     public function render()
     {

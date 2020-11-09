@@ -43,10 +43,12 @@ class EditUser extends Component
                 $manager = DB::table('manager')->first();
             }
         } else if ($this->users->hasRole('Manager')) {
+
             $data = DB::table('manager')
                 ->where('manager.id_users', '=', $this->userId)->first();
 
             if ($data) {
+
                 $this->name = $data->name;
                 $this->alamat = $data->alamat;
                 $this->phone = $data->phone;
@@ -56,18 +58,20 @@ class EditUser extends Component
     }
     public function update()
     {
+
         $this->validate([
             'name'   => 'required',
             'alamat'   => 'required',
             'phone'   => 'required',
             'role_id'   => 'required',
-            'division_id'   => 'required',
+
 
         ]);
 
         if ($this->userId) {
 
             $user = User::find($this->userId);
+
 
             if ($this->users->hasRole('Staff')) {
                 DB::table('staff')
@@ -97,7 +101,8 @@ class EditUser extends Component
 
                 //redirect
                 return redirect()->route('admin.users-supervisor');
-            } else if ($this->users->hasRole('Manager')) {
+            } else {
+
                 DB::table('manager')
                     ->where('id_users', $user->id)
                     ->update([
