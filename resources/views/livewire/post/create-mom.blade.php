@@ -67,34 +67,25 @@
                             </div>
                         </div>
                         @endforeach
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">2. What is Bootstrap?</button>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <p>Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree">3. What is CSS?</button>                     
-                                </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="https://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
                       
                     {{-- <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="attendees" placeholder="Enter Decision..."></textarea> --}}
-                </div> 
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput7">Send to :</label><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="notif.email">
+                        <label class="form-check-label mr-5" for="defaultCheck1">
+                            EMAIL
+                        </label>
+                        <input class="form-check-input" type="checkbox" id="defaultCheck2" wire:model="notif.wa">
+                        <label class="form-check-label" for="defaultCheck2">
+                            WHATSAPP
+                        </label>
+                    </div>
+                </div>
+                {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">Create</button> --}}
                 
                 <button wire:click.prevent="store()" class="btn btn-success">Create</button>
             </form>
