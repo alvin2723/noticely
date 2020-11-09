@@ -87,9 +87,26 @@
                 </div>
                 {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">Create</button> --}}
                 
-                <button wire:click.prevent="store()" class="btn btn-success">Create</button>
+                <button wire:click.prevent="store()" class="btn btn-success" onclick="modal();">Create</button>
+                <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content" style="width: 48px">
+                            <span class="fa fa-spinner fa-spin fa-3x"></span>
+                        </div>
+                    </div>
+                </div>
             </form>
             
         </div>
     </div>
 </div>
+<script>
+    function modal(){
+       $('.modal').modal('show');
+       setTimeout(function () {
+       	console.log('hejsan');
+       	$('.modal').modal('hide');
+       }, 3000);
+    }
+</script>
+

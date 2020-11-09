@@ -257,6 +257,21 @@
     background: #f7f5ec;
 }
 
+
+/* loading spinner */
+.bd-example-modal-lg .modal-dialog{
+    display: table;
+    position: relative;
+    margin: 0 auto;
+    top: calc(50% - 24px);
+  }
+  
+  .bd-example-modal-lg .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
+  }
+
+  /* media query */
 @media (max-width:600px) {
 
     /* sidebar menu */
