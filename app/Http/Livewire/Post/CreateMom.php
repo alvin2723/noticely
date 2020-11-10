@@ -46,9 +46,9 @@ class CreateMom extends Component
         $notification = array_keys(array_filter($this->notif));
         $user_id = Auth::id();
         $staff = DB::table('staff')->where('staff.id_users', $user_id)
-        ->first();
-        $supervisor = DB::table('supervisor')->where('supervisor.id_supervisor','=',$staff->id_supervisor)->first();
-        $super_user = User::where('id',$supervisor->id_users)->first();
+            ->first();
+        $supervisor = DB::table('supervisor')->where('supervisor.id_supervisor', '=', $staff->id_supervisor)->first();
+        $super_user = User::where('id', $supervisor->id_users)->first();
 
         $validatedData = $this->validate([
             'title_mom' => 'required',
@@ -73,20 +73,19 @@ class CreateMom extends Component
         ]);
         foreach ($result as $attendee) {
             DB::table('user_mom')->insert([
-                'id_user'=> $user_id,
+                'id_user' => $user_id,
                 'id_mom' => $mom->id,
                 'id_attendee' => $attendee
             ]);
-            
         }
-         $data = array(
+        $data = array(
             'staff_name' => $staff->name,
             'staff_email' => Auth::user()->email,
             'supervisor' => $super_user->email,
         );
-        
+
         Mail::to('alvinjulian87@gmail.com')->send(new SendMail($data));
-        dd($success);
+
         // session()->flash('message', 'Data Created Successfully.');
 
         $this->resetInputFields();

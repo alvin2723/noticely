@@ -19,11 +19,10 @@ class Users extends Component
             $user->delete();
         }
 
-        //flash message
-        session()->flash('message', 'Data Berhasil Dihapus.');
+
 
         //redirect
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users')->with(['success' => 'Data Has Been Deleted']);
     }
     public function render()
     {

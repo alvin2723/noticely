@@ -53,8 +53,8 @@
   
     <div class="col-lg-4 col-md-5 order-sm-1 col-sm-12 right-box ">
         
-        <a href="{{route('post.create-mom')}}" type="button" class="btn btn-primary btn-lg px-4"><i class="fas fa-plus" style="margin-right: 10px"></i>
-            Create MoM</a>
+        {{-- <a href="{{route('post.create-mom')}}" type="button" class="btn btn-primary btn-lg px-4"><i class="fas fa-plus" style="margin-right: 10px"></i>
+            Create MoM</a> --}}
     </div>
     
    

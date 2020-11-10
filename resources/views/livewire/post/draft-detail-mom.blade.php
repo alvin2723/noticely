@@ -55,31 +55,20 @@
                             <table class="table table-border table-hover  no-margin">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Division</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                    @foreach($attendee as $item)
+                                    <tr>
+                                        {{-- <th scope="row">{{$loop->index}}</th> --}}
+                                        <td class="text-center">{{$item->name}}</td>
+                                        <td class="text-center">{{$item->email}}</td>
+                                        <td class="text-center">{{$item->division_name}}</td>
+                                    </tr>
+                                   @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -93,20 +82,26 @@
     
     <div class="col-lg-4 col-md-5 right-box">
         <div class="card rounded shadow">
+            @role('Staff')
+            @if($data->status == '1')
             <div class="card-header blue-color">
-                @role('Staff')
-                    @if($data->status == '1')
-                        <h4  class="text-center">Notes For Change :</h4>
-                     @endif
-                @else
-                     <h4 class="text-center">Will You Approve This MOM?</h4>
-                 @endrole
+                   
+                <h4  class="text-center">Notes For Change :</h4>
             </div>
+            @endif
+            @else
+            <div class="card-header blue-color">
+                <h4 class="text-center">Will You Approve This MOM?</h4>
+            </div>
+            @endrole
+            
             <div class="card-body">
                 @role('Staff')
                     @if($data->status == '1')
                         <p class="py-2" style="font-size: 16px">sdfsdfsfsdfsdf</p>
-                        <a href="" type="button" class="btn btn-block btn-lg btn-success">Edit MOM</a>
+                        <a href="{{route('post.edit-mom',$data->id)}}" type="button" class="btn btn-block btn-lg btn-success">Edit MOM</a>
+                    @else
+                        <h4 class="py-2 text-center text-primary">Waiting for Approval</h4>
                     @endif
                 @else
                     <div class="row">

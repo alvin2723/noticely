@@ -60,7 +60,6 @@ class CreateUser extends Component
 
             ]);
 
-            session()->flash('message', 'Data Berhasil Disimpan.');
 
             //redirect
             return redirect()->route('admin.users');
