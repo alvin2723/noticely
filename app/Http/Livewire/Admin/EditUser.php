@@ -10,68 +10,52 @@ use Spatie\Permission\Models\Role;
 
 class EditUser extends Component
 {
-    public $userId, $name, $alamat, $phone, $division_id, $role_id,  $users;
+    public $userId, $name, $alamat, $phone,  $users;
+
+    public function getData($data)
+    {
+        $this->name = $data->name;
+        $this->alamat = $data->alamat;
+        $this->phone = $data->phone;
+    }
+    public function validateData()
+    {
+        $this->validate([
+            'name'   => 'required',
+            'alamat'   => 'required',
+            'phone'   => 'required',
+
+        ]);
+    }
+
     public function mount($id)
     {
-
         $this->users = User::find($id);
         $this->userId = $this->users->id;
         if ($this->users->hasRole('Staff')) {
 
             $data = DB::table('staff')
                 ->where('staff.id_users', '=', $this->userId)->first();
-
-            if ($data) {
-                $this->name = $data->name;
-                $this->alamat = $data->alamat;
-                $this->phone = $data->phone;
-                $this->division_id = $data->division_id;
-                $this->role_id = $this->users->roles->pluck('id')->first();
-                $supervisor = DB::table('supervisor')->where('division_id', '=', $this->division_id)->first();
-            }
+            $this->getData($data);
         } else if ($this->users->hasRole('Supervisor')) {
             $data = DB::table('supervisor')
                 ->where('supervisor.id_users', '=', $this->userId)->first();
-
-            if ($data) {
-                $this->name = $data->name;
-                $this->alamat = $data->alamat;
-                $this->phone = $data->phone;
-                $this->division_id = $data->division_id;
-                $this->role_id = $this->users->roles->pluck('id')->first();
-                $manager = DB::table('manager')->first();
-            }
-        } else if ($this->users->hasRole('Manager')) {
+            $this->getData($data);
+        } else {
 
             $data = DB::table('manager')
                 ->where('manager.id_users', '=', $this->userId)->first();
 
-            if ($data) {
-
-                $this->name = $data->name;
-                $this->alamat = $data->alamat;
-                $this->phone = $data->phone;
-                $this->role_id = $this->users->roles->pluck('id')->first();
-            }
+            $this->getData($data);
         }
     }
     public function update()
     {
-
-        $this->validate([
-            'name'   => 'required',
-            'alamat'   => 'required',
-            'phone'   => 'required',
-            'role_id'   => 'required',
-
-
-        ]);
+        $this->validateData();
 
         if ($this->userId) {
 
             $user = User::find($this->userId);
-
-
             if ($this->users->hasRole('Staff')) {
                 DB::table('staff')
                     ->where('id_users', $user->id)
@@ -126,11 +110,7 @@ class EditUser extends Component
     }
     public function render()
     {
-        $roles = Role::all();
-        $division = DB::table('division')->get();
-        return view('livewire.admin.edit-user', [
-            'division' => $division,
-            'roles' => $roles
-        ]);
+
+        return view('livewire.admin.edit-user');
     }
 }

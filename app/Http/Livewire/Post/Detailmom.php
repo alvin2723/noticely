@@ -26,7 +26,6 @@ class Detailmom extends Component
             ->join('division', 'division.id', '=', 'staff.division_id')
             ->where('id_mom', '=', $this->user_id)->get();
 
-
         return view('livewire.post.detailmom', [
             'data' => $this->data,
             'attendee' => $attendee
