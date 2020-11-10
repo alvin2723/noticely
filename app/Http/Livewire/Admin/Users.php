@@ -19,8 +19,6 @@ class Users extends Component
             $user->delete();
         }
 
-
-
         //redirect
         return redirect()->route('admin.users')->with(['success' => 'Data Has Been Deleted']);
     }

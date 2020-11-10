@@ -17,10 +17,8 @@ class DataMom extends Component
         if ($post) {
             $post->delete();
         }
-
         //flash message
         session()->flash('message', 'Data Berhasil Dihapus.');
-
         //redirect
         return redirect()->route('admin.data-mom');
     }

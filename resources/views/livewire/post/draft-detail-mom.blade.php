@@ -98,8 +98,9 @@
             <div class="card-body">
                 @role('Staff')
                     @if($data->status == '1')
-                        <p class="py-2" style="font-size: 16px">sdfsdfsfsdfsdf</p>
-                        <a href="{{route('post.edit-mom',$data->id)}}" type="button" class="btn btn-block btn-lg btn-success">Edit MOM</a>
+                        <p class="py-2 text-danger" style="font-size: 16px">sdfsdfsfsdfsdf</p>
+                        
+                        <a href="{{ route('post.edit-mom', $data->id) }}" type="button" class="btn btn-block btn-lg btn-success">Edit MOM</a>
                     @else
                         <h4 class="py-2 text-center text-primary">Waiting for Approval</h4>
                     @endif

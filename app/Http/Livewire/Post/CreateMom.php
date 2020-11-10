@@ -39,18 +39,9 @@ class CreateMom extends Component
         $this->objective_mom = '';
         $this->decision_made = '';
     }
-    public function store()
+    public function validateData()
     {
-
-        $result = array_keys(array_filter($this->attendees));
-        $notification = array_keys(array_filter($this->notif));
-        $user_id = Auth::id();
-        $staff = DB::table('staff')->where('staff.id_users', $user_id)
-            ->first();
-        $supervisor = DB::table('supervisor')->where('supervisor.id_supervisor', '=', $staff->id_supervisor)->first();
-        $super_user = User::where('id', $supervisor->id_users)->first();
-
-        $validatedData = $this->validate([
+        $this->validate([
             'title_mom' => 'required',
             'date_mom' => 'required',
             'start_mom' => 'required',
@@ -61,6 +52,9 @@ class CreateMom extends Component
             'notif' => 'required',
 
         ]);
+    }
+    public function saveData($result)
+    {
         $mom = MinuteOfMeeting::create([
             'title_mom' => $this->title_mom,
             'date_mom' => $this->date_mom,
@@ -73,25 +67,42 @@ class CreateMom extends Component
         ]);
         foreach ($result as $attendee) {
             DB::table('user_mom')->insert([
-                'id_user' => $user_id,
+                'id_user' => Auth::id(),
                 'id_mom' => $mom->id,
                 'id_attendee' => $attendee
             ]);
         }
+    }
+    public function mailConfirm($staff, $super_user)
+    {
         $data = array(
             'staff_name' => $staff->name,
             'staff_email' => Auth::user()->email,
             'supervisor' => $super_user->email,
         );
 
-        Mail::to('alvinjulian87@gmail.com')->send(new SendMail($data));
+        Mail::to($data['supervisor'])->send(new SendMail($data));
+    }
+    public function store()
+    {
+
+        $result = array_keys(array_filter($this->attendees));
+        $notification = array_keys(array_filter($this->notif));
+
+        $staff = DB::table('staff')->where('staff.id_users', Auth::id())->first();
+        $supervisor = DB::table('supervisor')->where('supervisor.id_supervisor', '=', $staff->id_supervisor)->first();
+        $super_user = User::where('id', $supervisor->id_users)->first();
+
+        $this->validateData();
+
+        $this->saveData($result);
+
+        $this->mailConfirm($staff, $super_user);
 
         session()->flash('message', 'New MOM Added.');
 
         $this->resetInputFields();
-        return redirect()->to('/');
 
-        // dd($validatedDate);
-
+        return redirect()->route('post.draft-mom');
     }
 }

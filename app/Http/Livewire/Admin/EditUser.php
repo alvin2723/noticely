@@ -27,7 +27,6 @@ class EditUser extends Component
                 $this->phone = $data->phone;
                 $this->division_id = $data->division_id;
                 $this->role_id = $this->users->roles->pluck('id')->first();
-
                 $supervisor = DB::table('supervisor')->where('division_id', '=', $this->division_id)->first();
             }
         } else if ($this->users->hasRole('Supervisor')) {

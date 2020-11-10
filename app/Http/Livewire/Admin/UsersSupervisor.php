@@ -13,20 +13,20 @@ class UsersSupervisor extends Component
 
         $user = User::find($userId);
 
-
         if ($user) {
             $supervisor = DB::table('supervisor')->where('id_users', $user->id)->first();
             $staff = DB::table('staff')->where('id_supervisor', $supervisor->id_supervisor)->get();
             if ($staff) {
-                session()->flash('warning', 'Need to delete the Staff that has this SupervisorID.');
+                //flash message
+                session()->flash('warning', 'Please delete the Staff that has this SupervisorID!');
                 return redirect()->route('admin.users');
             } else {
                 DB::table('supervisor')->where('id_users', $user->id)->delete();
                 $user->delete();
+                //flash message
                 session()->flash('message', 'Data Deleted.');
             }
         }
-        //flash message
 
 
         //redirect

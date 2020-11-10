@@ -21,10 +21,9 @@ class CreateUser extends Component
         $this->alamat = '';
         $this->phone = '';
     }
-
-    public function store()
+    public function validateData()
     {
-        $validatedData = $this->validate([
+        $this->validate([
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6',
@@ -33,33 +32,83 @@ class CreateUser extends Component
             'role_id' => 'required',
             'division_id' => 'required'
         ]);
+    }
+    public function  createUser()
+    {
+        $this->users = User::create([
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+        ]);
+        $role = Role::findById($this->role_id);
 
+        $this->users->assignRole([$role->id]);
+    }
+    public function createStaff()
+    {
+
+        $this->createUser();
+        $supervisor = DB::table('supervisor')->where('division_id', '=', $this->division_id)->first();
+        $data = DB::table('staff')->orderby('id_staff', 'DESC')->first();
+        $staff_id = $data->id_staff;
+        $staff_id++;
+
+        DB::table('staff')->insert([
+            'id_staff' => $staff_id,
+            'id_users' => $this->users->id,
+            'id_supervisor' => $supervisor->id_supervisor,
+            'name' => $this->name,
+            'division_id' => $this->division_id,
+            'alamat' => $this->alamat,
+            'phone' => $this->phone
+
+        ]);
+    }
+    public function createSupervisor()
+    {
+        $this->createUser();
+
+
+        $manager = DB::table('manager')->first();
+
+        $data = DB::table('supervisor')->orderby('id_supervisor', 'DESC')->first();
+        $supervisor_id = $data->id_supervisor;
+        $supervisor_id++;
+
+        DB::table('supervisor')->insert([
+            'id_supervisor' => $supervisor_id,
+            'id_users' => $this->users->id,
+            'id_manager' => $manager->id_manager,
+            'name' => $this->name,
+            'division_id' => $this->division_id,
+            'alamat' => $this->alamat,
+            'phone' => $this->phone
+
+        ]);
+    }
+    public function createManager()
+    {
+        $this->createUser();
+
+        $data = DB::table('manager')->orderby('id_manager', 'DESC')->first();
+        $manager_id = $data->id_manager;
+        $manager_id++;
+
+        DB::table('manager')->insert([
+            'id_manager' => $manager_id,
+            'id_users' => $this->users->id,
+            'name' => $this->name,
+            'alamat' => $this->alamat,
+            'phone' => $this->phone
+
+        ]);
+    }
+    public function store()
+    {
+        $this->validateData();
 
         if ($this->role_id == '2') {
 
-            $users = User::create([
-                'email' => $this->email,
-                'password' => Hash::make($this->password),
-            ]);
-            $role = Role::findById(2);
-            $users->assignRole([$role->id]);
-
-            $supervisor = DB::table('supervisor')->where('division_id', '=', $this->division_id)->first();
-            $data = DB::table('staff')->orderby('id_staff', 'DESC')->first();
-            $staff_id = $data->id_staff;
-            $staff_id++;
-
-            DB::table('staff')->insert([
-                'id_staff' => $staff_id,
-                'id_users' => $users->id,
-                'id_supervisor' => $supervisor->id_supervisor,
-                'name' => $this->name,
-                'division_id' => $this->division_id,
-                'alamat' => $this->alamat,
-                'phone' => $this->phone
-
-            ]);
-
+            $this->createStaff();
             session()->flash('message', 'New Data Has Been Added');
 
             //redirect
@@ -67,57 +116,15 @@ class CreateUser extends Component
             return redirect()->route('admin.users');
         } else if ($this->role_id == '3') {
 
-            $users = User::create([
-                'email' => $this->email,
-                'password' => Hash::make($this->password),
-            ]);
-            $role = Role::findById(3);
-            $users->assignRole([$role->id]);
-
-
-            $manager = DB::table('manager')->first();
-
-            $data = DB::table('supervisor')->orderby('id_supervisor', 'DESC')->first();
-            $supervisor_id = $data->id_supervisor;
-            $supervisor_id++;
-
-            DB::table('supervisor')->insert([
-                'id_supervisor' => $supervisor_id,
-                'id_users' => $users->id,
-                'id_manager' => $manager->id_manager,
-                'name' => $this->name,
-                'division_id' => $this->division_id,
-                'alamat' => $this->alamat,
-                'phone' => $this->phone
-
-            ]);
-
+            $this->createSupervisor();
             session()->flash('message', 'New Data Has Been Added');
 
             //redirect
-
             $this->resetInputFields();
             return redirect()->route('admin.users-supervisor');
         } else if ($this->role_id == '4') {
-            $users = User::create([
-                'email' => $this->email,
-                'password' => Hash::make($this->password),
-            ]);
-            $role = Role::findById(4);
-            $users->assignRole([$role->id]);
 
-            $data = DB::table('manager')->orderby('id_manager', 'DESC')->first();
-            $manager_id = $data->id_manager;
-            $manager_id++;
-
-            DB::table('manager')->insert([
-                'id_manager' => $manager_id,
-                'id_users' => $users->id,
-                'name' => $this->name,
-                'alamat' => $this->alamat,
-                'phone' => $this->phone
-
-            ]);
+            $this->createManager();
             session()->flash('message', 'New Data Has Been Added');
 
             //redirect
