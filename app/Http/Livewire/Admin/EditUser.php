@@ -83,7 +83,7 @@ class EditUser extends Component
                     ]);
 
                 //flash message
-                session()->flash('message', 'Data Berhasil Diupdate.');
+                session()->flash('message', 'Data Updated.');
 
                 //redirect
                 return redirect()->route('admin.users');
@@ -97,7 +97,7 @@ class EditUser extends Component
                     ]);
 
                 //flash message
-                session()->flash('message', 'Data Berhasil Diupdate.');
+                session()->flash('message', 'Data Updated.');
 
                 //redirect
                 return redirect()->route('admin.users-supervisor');
@@ -112,7 +112,7 @@ class EditUser extends Component
 
                     ]);
                 //flash message
-                session()->flash('message', 'Data Berhasil Diupdate.');
+                session()->flash('message', 'Data Updated.');
 
                 //redirect
                 return redirect()->route('admin.users-manager');

@@ -86,7 +86,7 @@ class CreateMom extends Component
 
         Mail::to('alvinjulian87@gmail.com')->send(new SendMail($data));
 
-        // session()->flash('message', 'Data Created Successfully.');
+        session()->flash('message', 'New MOM Added.');
 
         $this->resetInputFields();
         return redirect()->to('/');

@@ -19,11 +19,12 @@ class UsersManager extends Component
             $manager = DB::table('manager')->where('id_users', $user->id)->first();
             $supervisor = DB::table('supervisor')->where('id_manager', $manager->id_manager)->get();
             if ($supervisor) {
+                session()->flash('warning', 'Need to delete the Supervisor that have this ManagerID.');
                 return redirect()->route('admin.users-supervisor');
             } else {
                 DB::table('manager')->where('id_users', $user->id)->delete();
                 $user->delete();
-                session()->flash('message', 'Data Berhasil Dihapus.');
+                session()->flash('message', 'Data Deleted.');
             }
         }
 

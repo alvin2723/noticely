@@ -60,8 +60,10 @@ class CreateUser extends Component
 
             ]);
 
+            session()->flash('message', 'New Data Has Been Added');
 
             //redirect
+            $this->resetInputFields();
             return redirect()->route('admin.users');
         } else if ($this->role_id == '3') {
 
@@ -90,9 +92,11 @@ class CreateUser extends Component
 
             ]);
 
-            session()->flash('message', 'Data Berhasil Disimpan.');
+            session()->flash('message', 'New Data Has Been Added');
 
             //redirect
+
+            $this->resetInputFields();
             return redirect()->route('admin.users-supervisor');
         } else if ($this->role_id == '4') {
             $users = User::create([
@@ -114,9 +118,10 @@ class CreateUser extends Component
                 'phone' => $this->phone
 
             ]);
-            session()->flash('message', 'Data Berhasil Disimpan.');
+            session()->flash('message', 'New Data Has Been Added');
 
             //redirect
+            $this->resetInputFields();
             return redirect()->route('admin.users-manager');
         }
     }
