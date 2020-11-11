@@ -101,12 +101,6 @@ class EditUser extends Component
                 return redirect()->route('admin.users-manager');
             }
         }
-
-        //flash message
-        session()->flash('message', 'Data Berhasil Diupdate.');
-
-        //redirect
-        return redirect()->route('admin.users');
     }
     public function render()
     {

@@ -1,7 +1,7 @@
 <div>
     <div class="card rounded shadow" style="margin-right:22%">
         <div class="card-body p-5">
-            <form>
+            <form  wire:submit.prevent="update">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Title Minute of Meeting:</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title_mom">
@@ -39,37 +39,62 @@
                         @error('decision_made') <span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="exampleFormControlInput6">Attendees:</label><br>
                     <div class="accordion" id="accordionExample">
+                        @foreach($division as $divisi)
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h2 class="mb-0">
-                                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">1. What is HTML?</button>									
+                                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">{{$divisi->division_name}}</button>									
                                 </h2>
                             </div>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.data">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                          Default checkbox
-                                        </label>
-                                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.saa">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                          Default checkbox
-                                        </label>
-                                    </div>
+                                        @foreach($user as $item)
+                                            @if($item->division_id == $divisi->id)
+                                                @foreach($staff as $data)
+                                                 @if($item->id_staff == $data->id_staff)
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.{{$staff->id_staff}}"  {{ ($staff->id_staff) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="defaultCheck1">
+                                                        {{$staff->name}}
+                                                        </label>
+                                                    </div>
+                                                
+                                                @else
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="attendees.{{$item->id_staff}}">
+                                                        <label class="form-check-label" for="defaultCheck1">
+                                                        {{$item->name}}
+                                                        </label>
+                                                    </div>
+                                                @endif
+                                                @endforeach
+                                            @endif
+                                         @endforeach
                                 </div>
                             </div>
                         </div>
-                     
+                        @endforeach
+                    
                     </div>
-                      
-                    {{-- <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="attendees" placeholder="Enter Decision..."></textarea> --}}
-                </div> 
+                </div> --}}
+                <div class="form-group">
+                    <label for="exampleFormControlInput7">Send to :</label><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="notif.email">
+                        <label class="form-check-label mr-5" for="defaultCheck1">
+                            EMAIL
+                        </label>
+                        <input class="form-check-input" type="checkbox" id="defaultCheck2" wire:model="notif.wa">
+                        <label class="form-check-label" for="defaultCheck2">
+                            WHATSAPP
+                        </label>
+                    </div>
+                </div>
                 
-                <button wire:click.prevent="update()" class="btn btn-success">Edit</button>
+                <button type="submit" class="btn btn-success">Edit</button>
             </form>
             
         </div>

@@ -69,8 +69,6 @@
                         @endforeach
                     
                     </div>
-                      
-                    {{-- <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="attendees" placeholder="Enter Decision..."></textarea> --}}
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput7">Send to :</label><br>

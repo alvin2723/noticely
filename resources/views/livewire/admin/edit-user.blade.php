@@ -19,7 +19,7 @@
                     @error('phone') <span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-success">Create</button>
             </form>
             
         </div>
