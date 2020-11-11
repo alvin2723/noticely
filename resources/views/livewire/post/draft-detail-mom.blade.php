@@ -55,9 +55,9 @@
                             <table class="table table-border table-hover  no-margin">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Division</th>
+                                    <th scope="col" class="text-center">Name</th>
+                                    <th scope="col" class="text-center">Email</th>
+                                    <th scope="col" class="text-center">Division</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -98,27 +98,65 @@
             <div class="card-body">
                 @role('Staff')
                     @if($data->status == '1')
-                        <p class="py-2 text-danger" style="font-size: 16px">sdfsdfsfsdfsdf</p>
+                        <p class="py-2 text-danger" style="font-size: 20px">sdfsdfsfsdfsdf</p>
                         
                         <a href="{{ route('post.edit-mom', $data->id) }}" type="button" class="btn btn-block btn-lg btn-success">Edit MOM</a>
                     @else
-                        <h4 class="py-2 text-center text-primary">Waiting for Approval</h4>
+                        <h4 class="py-2 text-center text-warning">Waiting for Approval</h4>
                     @endif
                 @else
                     <div class="row">
                         <div class="col-6 p-2">
-                            <a href="" type="button" class="btn btn-block btn-lg btn-success">APPROVE</a>
+                            <button wire:click="approve()" type="button" class="btn btn-block btn-lg btn-success">APPROVE</button>
+                           
+                            {{-- <a href="" type="button" class="btn btn-block btn-lg btn-success">APPROVE</a> --}}
                         </div>
                         <div class="col-6 p-2">
-                            <a href="" type="button" class="btn btn-block btn-lg btn-secondary">DECLINE</a>
+                            <button type="button" class="btn btn-block btn-lg btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
+                                DECLINE
+                            </button>
+                            
                         </div>
                     </div>
-                
+                    
                 @endrole
             </div>
         </div>
         
     </div>
+    
+  <!-- Modal -->
+  <div wire:ignore.self class="modal fade" id="exampleModalCenter"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Note for Change:</h5>
+                    
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Notes:</label>
+                            <input type="text-area" class="form-control" id="exampleFormControlInput1" placeholder="notes" wire:model="notes_mom">
+                            @error('notes_mom') <span class="text-danger error">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                        <button wire:click.prevent="store_note()" type="submit" class="btn btn-primary">Create Note</button>
+                    </div>
+                </form>
+                   
+
+                
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.livewire.on('userStore', () => {
+            $('#exampleModal').modal('hide');
+        });
+    </script>
     {{-- <div class="col-lg-4 col-md-5 right-box">
         <div class="card p-3">
             <div class="card-body">

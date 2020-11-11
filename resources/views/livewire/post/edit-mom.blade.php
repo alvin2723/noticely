@@ -1,6 +1,6 @@
 <div>
-    <div class="card rounded shadow" style="margin-right:22%">
-        <div class="card-body p-5">
+    <div class="card rounded shadow">
+        <div class="card-body p-md-5">
             <form  wire:submit.prevent="update">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Title Minute of Meeting:</label>

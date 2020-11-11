@@ -13,15 +13,22 @@ class DraftMom extends Component
     public function render()
     {
         if (Auth::user()->hasRole('Staff')) {
-            $post = MinuteOfMeeting::where('status', '=', '0')->orWhere('status', '=', '1')->get();
+            $posts = MinuteOfMeeting::join('staff', 'staff.id_users', '=', 'mom.id_users')
+                ->select('mom.*', 'staff.name')
+                ->where('status', '=', '0')->orWhere('status', '=', '1')->get();
         } else if (Auth::user()->hasRole('Supervisor')) {
-            $post = MinuteOfMeeting::where('status', '=', '2')->get();
+            $posts = MinuteOfMeeting::join('staff', 'staff.id_users', '=', 'mom.id_users')
+                ->select('mom.*', 'staff.name')
+                ->where('status', '=', '0')->get();
         } else {
-            $post = MinuteOfMeeting::where('status', '=', '3')->get();
+            $posts =  MinuteOfMeeting::join('staff', 'staff.id_users', '=', 'mom.id_users')
+                ->select('mom.*', 'staff.name')
+                ->where('status', '=', '2')->get();
         }
 
-        return view('livewire.post.draft-mom', [
-            'posts' => $post
-        ]);
+        return view(
+            'livewire.post.draft-mom',
+            compact('posts')
+        );
     }
 }

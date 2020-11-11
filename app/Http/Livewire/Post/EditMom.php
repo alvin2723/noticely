@@ -50,7 +50,6 @@ class EditMom extends Component
     public function updateAttendee()
     {
         $staff = DB::table('user_mom')
-            ->join('users', 'users.id', '=', 'user_mom.id_user')
             ->join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
             ->where('user_mom.id_mom', $this->id_mom)
             ->select('staff.*')->first();
@@ -59,9 +58,8 @@ class EditMom extends Component
         foreach ($result as $attendee) {
             if ($attendee != $staff->id_staff) {
                 DB::table('user_mom')
-
                     ->insert([
-                        'id_user' => Auth::id(),
+
                         'id_attendee' => $attendee,
                         'id_mom' => $this->id_mom
                     ]);
@@ -96,7 +94,8 @@ class EditMom extends Component
     public function render()
     {
         $staff = DB::table('user_mom')
-            ->join('users', 'users.id', '=', 'user_mom.id_user')
+            ->join('mom', 'mom.id', '=', 'user_mom.id_mom')
+            ->join('users', 'users.id', '=', 'mom.id_users')
             ->join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
             ->where('user_mom.id_mom', $this->id_mom)
             ->select('staff.*')->get();

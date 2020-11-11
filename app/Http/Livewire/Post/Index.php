@@ -10,9 +10,13 @@ class Index extends Component
     public $post;
     public function render()
     {
-        $post = MinuteOfMeeting::where('status', '=', '3')->get();
-        return view('livewire.post.index', [
-            'posts' => $post
-        ]);
+        $posts = MinuteOfMeeting::join('staff', 'staff.id_users', '=', 'mom.id_users')
+            ->select('mom.*', 'staff.name')
+            ->where('mom.status', '=', '3')->get();
+
+        return view(
+            'livewire.post.index',
+            compact('posts')
+        );
     }
 }

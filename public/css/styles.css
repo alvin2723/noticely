@@ -1,22 +1,11 @@
-.app-container {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: auto;
-}
-
 .side-menu {
     height: 100vh;
-    width: 10%;
+    width: 200px;
     position: fixed;
     z-index: 1;
-    top: 12%;
-    left: 20%;
-    overflow-x: hidden;
+    margin-top: 20px;
+
+    overflow: auto;
 
 }
 
@@ -40,26 +29,68 @@
 
 /* post mom styling */
 .main {
-    margin-left: 30%;
+
+    margin-left: 200px;
     padding: 1rem;
 }
 
 .post-card {
-
+    background-repeat: no-repeat;
     margin: 0 auto 2rem auto;
     padding: 2rem;
+    -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
+@-webkit-keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 
 /* butotn create mom */
 .right-box {
     padding: 0px 0 0px 3rem;
 }
 
+/* draft mom */
+.left-box {
+    background-repeat: no-repeat;
+    -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+/* button styling */
+
 .btn-create {
     transition: all 0.5s;
     cursor: pointer;
     padding: 10px;
     margin: 5px 0 0 0;
+    color: #1785eb;
 }
 
 .btn-create span {
@@ -87,8 +118,6 @@
     left: 0;
 }
 
-
-
 /* details card mom */
 .tag {
     border-top: 1px solid rgba(128, 128, 128, 0.274);
@@ -105,6 +134,7 @@
     cursor: pointer;
     padding: 10px;
     margin: 5px 0 0 0;
+    color: #1785eb;
 }
 
 .btn-detail span {
@@ -145,9 +175,10 @@
     text-align: center;
     overflow: hidden;
     position: relative;
-    margin: 0px 25px;
-    padding: 30px 50px 30px 50px;
-    width: 30%;
+    padding: 20px 30px 20px 30px;
+    text-align: center;
+    margin-right: 20px;
+
 }
 
 .one-person .pic {
@@ -259,52 +290,64 @@
 
 
 /* loading spinner */
-.bd-example-modal-lg .modal-dialog{
+.bd-example-modal-lg .modal-dialog {
     display: table;
     position: relative;
     margin: 0 auto;
     top: calc(50% - 24px);
-  }
-  
-  .bd-example-modal-lg .modal-dialog .modal-content{
+}
+
+.bd-example-modal-lg .modal-dialog .modal-content {
     background-color: transparent;
     border: none;
-  }
+}
 
-  /* media query */
-@media (max-width:600px) {
+/* media query */
+/* Laptop */
+
+
+@media (max-width: 1199.98px) {
+    .side-menu {
+        width: 150px;
+    }
+
+    .main {
+
+        margin-left: 150px;
+    }
+
+}
+
+@media (max-width: 991.98px) {
+    .post-card {
+
+
+        padding: 0.5rem;
+    }
+}
+
+@media (min-width: 768px) {}
+
+@media (max-width: 767.98px) {}
+
+/* Mobile */
+
+@media (max-width: 600px) {
 
     /* sidebar menu */
 
-
-    .app-container {
-        margin: 0 auto;
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
     .side-menu {
-
-
         width: 100%;
         height: 5rem;
-
-
-
         text-align: center;
-
-
     }
 
     .side-menu .side-content {
         width: 100%;
-        padding: 1rem;
+
         flex-direction: row;
         display: flex;
-
+        background-color: #f1f1f1;
         align-items: center;
         justify-content: center;
         position: fixed;
@@ -313,22 +356,40 @@
     }
 
     .side-menu a {
+        flex-wrap: wrap;
         padding: 0;
         font-size: 14px;
+        height: 60px;
+        border-right: 1px #f8f9fa;
+        border-left: 1px solid #d5d7da;
+    }
+
+    .side-menu a i {
+        visibility: visible;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+        margin-top: 25px;
+
+    }
+
+    .side-menu p {
+        visibility: hidden;
+        margin: 0;
+        font-size: 0;
     }
 
     .side-menu a:hover {
-
+        border: 0px;
         background-color: var(--blue);
         color: white;
+        padding-bottom: 5px;
     }
-
-
 
     /* main post */
 
     .main {
-
+        left: 0;
         margin: 0;
         padding: 0;
         display: flex;
@@ -339,8 +400,8 @@
 
     .post-card {
         width: 50%;
-        margin: 0 auto 2rem auto;
         padding: 1.5rem;
+        text-align: center;
     }
 
     .all-division {
@@ -358,6 +419,11 @@
         margin: 0 auto 1rem auto;
         padding: 0;
 
+    }
+
+    .left-box {
+        margin-right: 0;
+        text-align: center;
     }
 
 

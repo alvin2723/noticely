@@ -56,7 +56,6 @@ class CreateMom extends Component
         ]);
         foreach ($result as $attendee) {
             DB::table('user_mom')->insert([
-                'id_user' => Auth::id(),
                 'id_mom' => $mom->id,
                 'id_attendee' => $attendee
             ]);

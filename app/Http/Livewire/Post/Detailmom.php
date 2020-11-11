@@ -16,15 +16,16 @@ class Detailmom extends Component
     public function mount($id_mom)
     {
         $this->data = MinuteOfMeeting::find($id_mom);
-        $this->user_id = $id_mom;
+        $this->mom_id = $id_mom;
     }
     public function render()
     {
         $attendee = DB::table('user_mom')
-            ->join('users', 'users.id', '=', 'user_mom.id_user')
+            ->join('mom', 'mom.id', '=', 'user_mom.id_mom')
+            ->join('users', 'users.id', '=', 'mom.id_users')
             ->join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
             ->join('division', 'division.id', '=', 'staff.division_id')
-            ->where('id_mom', '=', $this->user_id)->get();
+            ->where('id_mom', '=', $this->mom_id)->get();
 
         return view('livewire.post.detailmom', [
             'data' => $this->data,
