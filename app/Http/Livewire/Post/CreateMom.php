@@ -44,7 +44,9 @@ class CreateMom extends Component
     }
     public function saveData($result)
     {
+
         $mom = MinuteOfMeeting::create([
+            'id_users' => Auth::id(),
             'title_mom' => $this->title_mom,
             'date_mom' => $this->date_mom,
             'start_mom' => $this->start_mom,
@@ -52,6 +54,7 @@ class CreateMom extends Component
             'objective_mom' => $this->objective_mom,
             'decision_made' => $this->decision_made,
             'status' => $this->status,
+
 
         ]);
         foreach ($result as $attendee) {

@@ -13,6 +13,7 @@ class MinuteOfMeeting extends Model
      * @var array
      */
     protected $fillable = [
+        'id_users',
         'title_mom',
         'date_mom',
         'start_mom',
