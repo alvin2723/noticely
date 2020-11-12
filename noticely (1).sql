@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2020 at 10:11 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- Generation Time: Nov 12, 2020 at 07:03 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -139,6 +139,8 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\User', 4),
 (2, 'App\\User', 1),
+(2, 'App\\User', 17),
+(2, 'App\\User', 18),
 (3, 'App\\User', 3),
 (4, 'App\\User', 2),
 (4, 'App\\User', 12);
@@ -151,6 +153,7 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 
 CREATE TABLE `mom` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `id_users` bigint(20) NOT NULL,
   `title_mom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_mom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `start_mom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -167,16 +170,33 @@ CREATE TABLE `mom` (
 -- Dumping data for table `mom`
 --
 
-INSERT INTO `mom` (`id`, `title_mom`, `date_mom`, `start_mom`, `end_mom`, `objective_mom`, `decision_made`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'dds', '2222-02-12', '12:33', '04:01', 'sdfsfsfsdsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfhjhsfsdsdwerdaaadasd', 'sfsdfsdsfsdsdf', '3', NULL, '2020-10-27 00:57:40', '2020-10-27 00:57:40'),
-(2, 'dds', '2222-02-12', '12:33', '04:01', 'sdfsfsfsd', 'sfsdfsdsfsdsdf', '3', NULL, '2020-10-27 00:57:40', '2020-10-27 00:57:40'),
-(3, 'ddsfff', '2222-02-12', '12:33', '04:01', 'sdfsfsfsd', 'sfsdfsdsfsdsdf', '2', NULL, '2020-10-27 00:57:40', '2020-10-27 00:57:40'),
-(4, 'dfdsfsdfsdf', '1233-03-12', '12:03', '12:23', 'sdfsdfsdf', 'sdfsdfsdf', '3', NULL, '2020-11-06 22:44:59', '2020-11-06 22:44:59'),
-(5, 'asdasdasd', '1333-03-12', '12:23', '03:21', 'sdfsdfsdf', 'sssddd', '3', NULL, '2020-11-06 22:45:40', '2020-11-06 22:45:40'),
-(6, 'asdasdasd', '1333-03-12', '12:23', '03:21', 'sdfsdfsdf', 'sssddd', '0', NULL, '2020-11-06 22:45:41', '2020-11-06 22:45:41'),
-(7, 'aas', '2323-03-12', '12:22', '23:31', 'asdfsdfsdfsdf', 'aaaaa', '0', NULL, '2020-11-06 22:47:42', '2020-11-06 22:47:42'),
-(8, 'aas', '2323-03-12', '12:22', '23:31', 'asdfsdfsdfsdf', 'aaaaa', '0', NULL, '2020-11-06 22:47:42', '2020-11-06 22:47:42'),
-(9, 'Bocah', '3222-03-12', '12:33', '03:23', 'sdfsfssss323', 'aakalalala', '0', NULL, '2020-11-09 02:00:15', '2020-11-09 02:00:15');
+INSERT INTO `mom` (`id`, `id_users`, `title_mom`, `date_mom`, `start_mom`, `end_mom`, `objective_mom`, `decision_made`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 1, 'dds', '2222-02-12', '12:33', '04:01', 'sdfsfsfsdsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfhjhsfsdsdwerdaaadasd', 'sfsdfsdsfsdsdf', '3', NULL, '2020-10-27 00:57:40', '2020-10-27 00:57:40'),
+(3, 1, 'ddsfff', '2222-02-12', '12:33', '04:01', 'sdfsfsfsd', 'sfsdfsdsfsdsdf', '1', NULL, '2020-10-27 00:57:40', '2020-11-11 04:14:40'),
+(4, 1, 'dfdsfsdfsdf', '1233-03-12', '12:03', '12:23', 'sdfsdfsdf', 'sdfsdfsdf', '3', NULL, '2020-11-06 22:44:59', '2020-11-06 22:44:59'),
+(5, 1, 'asdasdasd', '1333-03-12', '12:23', '03:21', 'sdfsdfsdf', 'sssddd', '3', NULL, '2020-11-06 22:45:40', '2020-11-06 22:45:40'),
+(7, 1, 'aasaa', '2323-03-12', '12:22', '23:31', 'asdfsdfsdfsdf', 'aaaaa', '2', NULL, '2020-11-06 22:47:42', '2020-11-11 04:11:01'),
+(8, 1, 'aas', '2323-03-12', '12:22', '23:31', 'asdfsdfsdfsdf', 'aaaaa', '3', NULL, '2020-11-06 22:47:42', '2020-11-11 04:21:56'),
+(9, 1, 'Bocah', '3222-03-12', '12:33', '03:23', 'sdfsfssss323', 'aakalalala', '0', NULL, '2020-11-09 02:00:15', '2020-11-09 02:00:15'),
+(10, 1, 'asam', '2012-03-12', '23:33', '04:05', 'sdfsfdssdsss', 'sfsdfsdf', '1', NULL, '2020-11-10 01:12:14', '2020-11-10 22:07:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `note_mom`
+--
+
+CREATE TABLE `note_mom` (
+  `id_mom` bigint(20) NOT NULL,
+  `note_desc` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `note_mom`
+--
+
+INSERT INTO `note_mom` (`id_mom`, `note_desc`) VALUES
+(3, 'aaaaaaaawwwewe');
 
 -- --------------------------------------------------------
 
@@ -262,9 +282,10 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id_staff`, `id_users`, `id_supervisor`, `name`, `division_id`, `alamat`, `phone`, `created_at`, `updated_at`) VALUES
-('S01', 1, 'SP01', 'Jul', 1, 'Jambi', '012312315656', NULL, NULL),
+('S01', 1, 'SP01', 'Julsa', 1, 'Jambi', '012312315656', NULL, NULL),
 ('S02', 12, 'SP01', 'Juladf', 1, 'Jambi', '012312315656', NULL, NULL),
-('S03', 9, 'SP01', 'Juladfsdsfsdfd', 2, 'Jambi', '012312315656', NULL, NULL);
+('S03', 9, 'SP01', 'Juladfsdsfsdfd', 2, 'Jambi', '012312315656', NULL, NULL),
+('S04', 18, 'SP01', 'adasda', 1, 'fdsdfsdfds', '123123123', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -320,7 +341,10 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `password`, `remember_t
 (7, 'ddsfff', NULL, '$2y$10$EQM/y/qnBuXGQ2ZJpxSD5.drSbDld39a2iu1bU5LGJHXjTyRxn7qG', NULL, '2020-11-04 21:36:49', '2020-11-04 21:36:49'),
 (8, 'ddsfffsss', NULL, '$2y$10$7tH/cdDkKFSduBVnAfDJnujfuWT4jKY7ATBIdvHrwMOXWX7s4Hziy', NULL, '2020-11-04 21:37:03', '2020-11-04 21:37:03'),
 (9, 'daa', NULL, '$2y$10$Ril/QFscIJwB1v/R4aKjPugaKw8JnFme6waIH27Fdi1Nu8nPkUrDa', NULL, '2020-11-04 21:41:32', '2020-11-04 21:41:32'),
-(12, 'sdf31122@gmail.com', NULL, '$2y$10$Qftgs1uzGVUISFsqvH4TpOXoctn1clTSWwfD6NEd9NXhpg1wjowbC', NULL, '2020-11-04 22:08:49', '2020-11-04 22:08:49');
+(12, 'sdf31122@gmail.com', NULL, '$2y$10$Qftgs1uzGVUISFsqvH4TpOXoctn1clTSWwfD6NEd9NXhpg1wjowbC', NULL, '2020-11-04 22:08:49', '2020-11-04 22:08:49'),
+(15, 'asdads@gmail.com', NULL, '$2y$10$MQMwVLHp9mYcGy6x0wJNYOT/VjVSMzee49.6iL8BjU/MhQpVZZ0Ne', NULL, '2020-11-10 01:34:02', '2020-11-10 01:34:02'),
+(17, 'asdads222@gmail.com', NULL, '$2y$10$Q/KXz62YBWsiqjwSLoPcj.ceFwyGdoes4iwevyPTIEhS3v7s0z/LC', NULL, '2020-11-10 01:36:40', '2020-11-10 01:36:40'),
+(18, 'asdads22aaa2@gmail.com', NULL, '$2y$10$UzunwjK49t1YZwCqCdmZXu1oB/DfkST8KMz5L98xXgNDH2lJ0Tr0.', NULL, '2020-11-10 01:41:41', '2020-11-10 01:41:41');
 
 -- --------------------------------------------------------
 
@@ -329,7 +353,6 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `password`, `remember_t
 --
 
 CREATE TABLE `user_mom` (
-  `id_user` bigint(20) UNSIGNED NOT NULL,
   `id_mom` bigint(20) UNSIGNED NOT NULL,
   `id_attendee` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -338,10 +361,15 @@ CREATE TABLE `user_mom` (
 -- Dumping data for table `user_mom`
 --
 
-INSERT INTO `user_mom` (`id_user`, `id_mom`, `id_attendee`) VALUES
-(1, 1, 'S02'),
-(1, 9, 'S02'),
-(1, 9, 'S03');
+INSERT INTO `user_mom` (`id_mom`, `id_attendee`) VALUES
+(1, 'S02'),
+(9, 'S02'),
+(9, 'S03'),
+(10, 'S04'),
+(10, 'S01'),
+(10, 'S04'),
+(10, 'S02'),
+(10, 'S03');
 
 --
 -- Indexes for dumped tables
@@ -444,7 +472,6 @@ ALTER TABLE `users`
 -- Indexes for table `user_mom`
 --
 ALTER TABLE `user_mom`
-  ADD KEY `user_mom_id_user_foreign` (`id_user`),
   ADD KEY `user_mom_id_mom_foreign` (`id_mom`);
 
 --
@@ -473,7 +500,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `mom`
 --
 ALTER TABLE `mom`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -491,7 +518,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
@@ -540,8 +567,7 @@ ALTER TABLE `supervisor`
 -- Constraints for table `user_mom`
 --
 ALTER TABLE `user_mom`
-  ADD CONSTRAINT `user_mom_id_mom_foreign` FOREIGN KEY (`id_mom`) REFERENCES `mom` (`id`),
-  ADD CONSTRAINT `user_mom_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `user_mom_id_mom_foreign` FOREIGN KEY (`id_mom`) REFERENCES `mom` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
