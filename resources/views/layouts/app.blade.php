@@ -191,7 +191,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Notice.ly') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -214,10 +214,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-primary navbar-rounded shadow p-2 mb-5 sticky-top"  role="navigation">
+        <nav class="navbar navbar-expand-md navbar-light navbar-rounded shadow p-2 mb-5 sticky-top"  role="navigation" style="background-color: #0078ff">
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ route('post.index') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Notice.ly') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

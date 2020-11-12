@@ -21,7 +21,8 @@
 
 .side-menu a:hover {
     border-left: 10px solid blue;
-    background-color: var(--blue);
+    background-color: #0078ff;
+
     color: white;
     padding-left: 5px;
 }
@@ -74,6 +75,11 @@
 /* butotn create mom */
 .right-box {
     padding: 0px 0 0px 3rem;
+}
+
+.right-box a {
+    text-align: center;
+    margin: 0 0 5% 21%;
 }
 
 /* draft mom */
@@ -326,13 +332,11 @@
     }
 }
 
-@media (min-width: 768px) {}
 
-@media (max-width: 767.98px) {}
 
 /* Mobile */
 
-@media (max-width: 600px) {
+@media (max-width:768px) {
 
     /* sidebar menu */
 

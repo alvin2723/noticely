@@ -31,8 +31,8 @@
                         <p class="text-muted text-capitalize" style="font-size:16px">{{$post->objective_mom}}</p>
                         <div class="tag d-flex justify-content-between">
                             <div class="user-image">
-                                <img src="{{ asset('image/1.png') }}" class="rounded-circle" alt="" style="width: 50px; height:50px">
-                                <p class="m-3">{{$post->name}}</p>
+                                <img src="{{ asset('image/person.png') }}" class="rounded-circle" alt="" style="width: 50px; height:50px">
+                                <p class="m-3">Created by<span class="text-primary"> {{$post->name}}</span></p>
                             </div>
                             <div>
                                 <a href="{{route('post.draft-detail-mom', $post->id)}}" type="button" class="btn btn-primary text-right px-4 btn-detail"><span>Details</span>
