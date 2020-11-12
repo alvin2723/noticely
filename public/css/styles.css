@@ -425,6 +425,11 @@
 
     }
 
+    .right-box a {
+        text-align: center;
+        margin: 0 0 5% 0;
+    }
+
     .left-box {
         margin-right: 0;
         text-align: center;
