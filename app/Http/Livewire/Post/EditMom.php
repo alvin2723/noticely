@@ -20,14 +20,8 @@ class EditMom extends Component
     {
         $this->validate([
             'title_mom' => 'required',
-            'date_mom' => 'required',
-            'start_mom' => 'required',
-            'end_mom' => 'required',
             'objective_mom' => 'required',
             'decision_made' => 'required',
-            'attendees' => 'required',
-            'notif' => 'required',
-
         ]);
     }
 
@@ -49,25 +43,24 @@ class EditMom extends Component
 
     public function updateAttendee()
     {
-        $staff = DB::table('user_mom')
-            ->join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
-            ->where('user_mom.id_mom', $this->id_mom)
-            ->select('staff.*')->first();
-        $result = array_keys(array_filter($this->attendees));
+        // $staff = DB::table('user_mom')
+        //     ->join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
+        //     ->where('user_mom.id_mom', $this->id_mom)
+        //     ->select('staff.*')->first();
+        // $result = array_keys(array_filter($this->attendees));
 
-        foreach ($result as $attendee) {
-            if ($attendee != $staff->id_staff) {
-                DB::table('user_mom')
-                    ->insert([
+        // foreach ($result as $attendee) {
+        //     if ($attendee != $staff->id_staff) {
+        //         DB::table('user_mom')
+        //             ->insert([
+        //                 'id_attendee' => $attendee,
+        //                 'id_mom' => $this->id_mom
+        //             ]);
+        //     }
 
-                        'id_attendee' => $attendee,
-                        'id_mom' => $this->id_mom
-                    ]);
-            }
 
-
-            LOG::debug($attendee);
-        }
+        //     LOG::debug($attendee);
+        // }
     }
 
     public function update()
@@ -75,35 +68,32 @@ class EditMom extends Component
 
         $this->validateData();
 
-
         $mom = MinuteOfMeeting::find($this->id_mom);
         if ($mom) {
             $mom->update([
                 'title_mom' => $this->title_mom,
-                'date_mom' => $this->date_mom,
-                'start_mom' => $this->start_mom,
-                'end_mom' => $this->end_mom,
                 'objective_mom' => $this->objective_mom,
                 'decision_made' => $this->decision_made,
                 'status' => 0
             ]);
-            $this->updateAttendee();
+            // $this->updateAttendee();
             session()->flash('message', 'MOM Updated.');
+            return redirect()->route('post.draft-mom');
         }
     }
     public function render()
     {
-        $division = DB::table('division')->get();
-        $staff = DB::table('user_mom')
-            ->join('mom', 'mom.id', '=', 'user_mom.id_mom')
-            ->join('users', 'users.id', '=', 'mom.id_users')
-            ->join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
-            ->where('user_mom.id_mom', $this->id_mom)
-            ->select('staff.*')->get();
-        $user = User::join('staff', 'staff.id_users', '=', 'users.id')
-            ->join('division', 'division.id', '=', 'staff.division_id')
-            ->select('staff.*', 'division.*')->get();
+        //     $division = DB::table('division')->get();
+        //     $staff = DB::table('user_mom')
+        //         ->join('mom', 'mom.id', '=', 'user_mom.id_mom')
+        //         ->join('users', 'users.id', '=', 'mom.id_users')
+        //         ->join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
+        //         ->where('user_mom.id_mom', $this->id_mom)
+        //         ->select('staff.*')->get();
+        //     $user = User::join('staff', 'staff.id_users', '=', 'users.id')
+        //         ->join('division', 'division.id', '=', 'staff.division_id')
+        //         ->select('staff.*', 'division.*')->get();
 
-        return view('livewire.post.edit-mom', compact('division', 'staff', 'user'));
+        return view('livewire.post.edit-mom');
     }
 }

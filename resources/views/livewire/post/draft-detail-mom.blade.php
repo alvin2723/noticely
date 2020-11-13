@@ -100,7 +100,7 @@
                     @if($data->status == '1')
                         <p class="py-2 text-danger" style="font-size: 20px">sdfsdfsfsdfsdf</p>
                         
-                        <a href="{{ route('post.edit-mom', $data->id) }}" type="button" class="btn btn-block btn-lg btn-success">Edit MOM</a>
+                        <a href="{{ route('post.edit-mom', $data->id) }}" type="button" class="btn btn-block btn-success" style="margin:0">Edit MOM</a>
                     @else
                         <h4 class="py-2 text-center text-warning">Waiting for Approval</h4>
                     @endif
