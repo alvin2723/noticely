@@ -61,12 +61,12 @@ class DraftDetailMom extends Component
         $note = DB::table('note_mom')
             ->where('note_mom.id_mom', $this->mom_id)->first();
 
+
         if ($note) {
             DB::table('note_mom')
                 ->where('note_mom.id_mom', $this->mom_id)->delete();
-
-            $this->update_status();
         }
+        $this->update_status();
 
         session()->flash('message', 'Status Changed.');
 
