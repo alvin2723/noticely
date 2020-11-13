@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Post;
 use Livewire\Component;
 use App\MinuteOfMeeting;
 use App\User;
+use App\Staff;
+use App\Supervisor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -44,28 +46,39 @@ class CreateMom extends Component
     }
     public function saveData($result)
     {
+        $mom_name = MinuteOfMeeting::where('title_mom', $this->title_mom);
+        if ($mom_name) {
+            session()->flash('warning', 'This Title MOM already Exists, Please Enter Another Title!');
+            return redirect()->route('post.index');
+        } else {
+            $mom = MinuteOfMeeting::create([
+                'id_users' => Auth::id(),
+                'title_mom' => $this->title_mom,
+                'date_mom' => $this->date_mom,
+                'start_mom' => $this->start_mom,
+                'end_mom' => $this->end_mom,
+                'objective_mom' => $this->objective_mom,
+                'decision_made' => $this->decision_made,
+                'status' => $this->status,
 
-        $mom = MinuteOfMeeting::create([
-            'id_users' => Auth::id(),
-            'title_mom' => $this->title_mom,
-            'date_mom' => $this->date_mom,
-            'start_mom' => $this->start_mom,
-            'end_mom' => $this->end_mom,
-            'objective_mom' => $this->objective_mom,
-            'decision_made' => $this->decision_made,
-            'status' => $this->status,
 
-
-        ]);
-        foreach ($result as $attendee) {
-            DB::table('user_mom')->insert([
-                'id_mom' => $mom->id,
-                'id_attendee' => $attendee
             ]);
+            foreach ($result as $attendee) {
+                DB::table('user_mom')->insert([
+                    'id_mom' => $mom->id,
+                    'id_attendee' => $attendee
+                ]);
+            }
+            $this->mailConfirm();
+
+            session()->flash('message', 'New MOM Added.');
         }
     }
-    public function mailConfirm($staff, $super_user)
+    public function mailConfirm()
     {
+        $staff = Staff::where('staff.id_users', Auth::id())->first();
+        $supervisor = Supervisor::where('supervisor.id_supervisor', '=', $staff->id_supervisor)->first();
+        $super_user = User::where('id', $supervisor->id_users)->first();
         $data = array(
             'staff_name' => $staff->name,
             'staff_email' => Auth::user()->email,
@@ -80,17 +93,11 @@ class CreateMom extends Component
         $result = array_keys(array_filter($this->attendees));
         $notification = array_keys(array_filter($this->notif));
 
-        $staff = DB::table('staff')->where('staff.id_users', Auth::id())->first();
-        $supervisor = DB::table('supervisor')->where('supervisor.id_supervisor', '=', $staff->id_supervisor)->first();
-        $super_user = User::where('id', $supervisor->id_users)->first();
-
         $this->validateData();
 
         $this->saveData($result);
 
-        $this->mailConfirm($staff, $super_user);
 
-        session()->flash('message', 'New MOM Added.');
 
         $this->resetInputFields();
 
@@ -104,9 +111,6 @@ class CreateMom extends Component
             ->select('staff.*', 'division.*')->get();
         $division = DB::table('division')->get();
 
-        return view('livewire.post.create-mom', [
-            'user' => $user,
-            'division' => $division
-        ]);
+        return view('livewire.post.create-mom', compact('user', 'division'));
     }
 }

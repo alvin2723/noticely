@@ -3,6 +3,9 @@
 namespace App\Http\Livewire\Admin;
 
 use App\User;
+use App\Manager;
+use App\Staff;
+use App\Supervisor;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +14,7 @@ use Spatie\Permission\Models\Role;
 
 class CreateUser extends Component
 {
-    public $name, $email, $password, $alamat, $phone, $role_id, $division_id, $user;
+    public $name, $email, $password, $alamat, $phone, $role_id, $division_id, $user, $id_supervisor;
 
     public function resetInputFields()
     {
@@ -28,9 +31,10 @@ class CreateUser extends Component
             'email' => 'required|email',
             'password' => 'required|min:6',
             'alamat' => 'required|min:6',
-            'phone' => 'required',
+            'phone' => 'required|min:12',
             'role_id' => 'required',
-            'division_id' => 'required'
+            'division_id' => 'required',
+
         ]);
     }
     public function  createUser()
@@ -47,15 +51,14 @@ class CreateUser extends Component
     {
 
         $this->createUser();
-        $supervisor = DB::table('supervisor')->where('division_id', '=', $this->division_id)->first();
-        $data = DB::table('staff')->orderby('id_staff', 'DESC')->first();
+        $data = Staff::orderby('id_staff', 'DESC')->first();
         $staff_id = $data->id_staff;
         $staff_id++;
 
-        DB::table('staff')->insert([
+        Staff::create([
             'id_staff' => $staff_id,
             'id_users' => $this->users->id,
-            'id_supervisor' => $supervisor->id_supervisor,
+            'id_supervisor' => $this->id_supervisor,
             'name' => $this->name,
             'division_id' => $this->division_id,
             'alamat' => $this->alamat,
@@ -68,13 +71,12 @@ class CreateUser extends Component
         $this->createUser();
 
 
-        $manager = DB::table('manager')->first();
-
-        $data = DB::table('supervisor')->orderby('id_supervisor', 'DESC')->first();
+        $manager = Manager::where('division_id', $this->division_id)->first();
+        $data = Supervisor::orderby('id_supervisor', 'DESC')->first();
         $supervisor_id = $data->id_supervisor;
         $supervisor_id++;
 
-        DB::table('supervisor')->insert([
+        Supervisor::create([
             'id_supervisor' => $supervisor_id,
             'id_users' => $this->users->id,
             'id_manager' => $manager->id_manager,
@@ -89,13 +91,14 @@ class CreateUser extends Component
     {
         $this->createUser();
 
-        $data = DB::table('manager')->orderby('id_manager', 'DESC')->first();
+        $data = Manager::orderby('id_manager', 'DESC')->first();
         $manager_id = $data->id_manager;
         $manager_id++;
 
-        DB::table('manager')->insert([
+        Manager::create([
             'id_manager' => $manager_id,
             'id_users' => $this->users->id,
+            'division_id' => $this->division_id,
             'name' => $this->name,
             'alamat' => $this->alamat,
             'phone' => $this->phone
@@ -104,6 +107,7 @@ class CreateUser extends Component
     }
     public function store()
     {
+
         $this->validateData();
 
         if ($this->role_id == '2') {
@@ -136,9 +140,8 @@ class CreateUser extends Component
     {
         $roles = Role::all();
         $division = DB::table('division')->get();
-        return view('livewire.admin.create-user', [
-            'division' => $division,
-            'roles' => $roles
-        ]);
+        $supervisor = Supervisor::all();
+
+        return view('livewire.admin.create-user', compact('roles', 'division', 'supervisor'));
     }
 }

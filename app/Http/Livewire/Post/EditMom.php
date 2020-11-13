@@ -93,6 +93,7 @@ class EditMom extends Component
     }
     public function render()
     {
+        $division = DB::table('division')->get();
         $staff = DB::table('user_mom')
             ->join('mom', 'mom.id', '=', 'user_mom.id_mom')
             ->join('users', 'users.id', '=', 'mom.id_users')
@@ -103,12 +104,6 @@ class EditMom extends Component
             ->join('division', 'division.id', '=', 'staff.division_id')
             ->select('staff.*', 'division.*')->get();
 
-        $division = DB::table('division')->get();
-        return view('livewire.post.edit-mom', [
-            'user' => $user,
-            'staff' => $staff,
-            'division' => $division
-
-        ]);
+        return view('livewire.post.edit-mom', compact('division', 'staff', 'user'));
     }
 }

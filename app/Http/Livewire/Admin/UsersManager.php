@@ -6,6 +6,8 @@ use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\User;
+use App\Manager;
+use App\Supervisor;
 
 class UsersManager extends Component
 {
@@ -16,13 +18,13 @@ class UsersManager extends Component
 
 
         if ($user) {
-            $manager = DB::table('manager')->where('id_users', $user->id)->first();
-            $supervisor = DB::table('supervisor')->where('id_manager', $manager->id_manager)->get();
+            $manager = Manager::where('id_users', $user->id)->first();
+            $supervisor = Supervisor::where('id_manager', $manager->id_manager)->get();
             if ($supervisor) {
                 session()->flash('warning', 'Please delete the Supervisor that have this ManagerID!');
                 return redirect()->route('admin.users-supervisor');
             } else {
-                DB::table('manager')->where('id_users', $user->id)->delete();
+                Manager::where('id_users', $user->id)->delete();
                 $user->delete();
                 session()->flash('message', 'Data Deleted.');
             }
@@ -35,8 +37,11 @@ class UsersManager extends Component
     }
     public function render()
     {
+        $manager = User::join('manager', 'manager.id_users', '=', 'users.id')
+            ->join('division', 'division.id', '=', 'manager.division_id')
+            ->get(['users.*', 'manager.*', 'division.division_name']);
 
-        $manager = User::join('manager', 'manager.id_users', '=', 'users.id')->get(['users.*', 'manager.*']);
+
         return view('livewire.admin.users-manager', [
 
             'manager' => $manager

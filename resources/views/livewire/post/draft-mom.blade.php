@@ -1,8 +1,10 @@
 <div style="margin: 0">
 
     {{-- Nothing in the world is as soft and yielding as water. --}}
+   
     <div class="col-md-9 col-sm-12">
         @foreach($posts as $post)
+       
         <div class="card rounded shadow left-box p-md-4" >
             <div class="card-body">
                 <div class="row">

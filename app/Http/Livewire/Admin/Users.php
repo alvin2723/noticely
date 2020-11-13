@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\User;
+use App\Staff;
 
 class Users extends Component
 {
@@ -15,7 +16,7 @@ class Users extends Component
         $user = User::find($userId);
 
         if ($user) {
-            DB::table('staff')->where('id_users', $user->id)->delete();
+            Staff::where('id_users', $user->id)->delete();
             $user->delete();
         }
 

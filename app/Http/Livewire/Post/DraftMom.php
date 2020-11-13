@@ -26,9 +26,6 @@ class DraftMom extends Component
                 ->where('status', '=', '2')->get();
         }
 
-        return view(
-            'livewire.post.draft-mom',
-            compact('posts')
-        );
+        return view('livewire.post.draft-mom', compact('posts'));
     }
 }

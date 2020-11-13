@@ -38,7 +38,29 @@
                        
                     </select>
                 </div>
-               @if($this->role_id == '2' || $this->role_id == '3')
+               @if($this->role_id == '2')
+                <div class="form-group">
+                    <label for="exampleFormControlInput3">Division:</label>
+                    <select id="division_id" wire:model="division_id" class="form-control">
+                        <option value=''>Choose a Division</option>
+                        @foreach($division as $item)
+                            <option value="{{$item->id}}">{{$item->division_name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+               
+                <div class="form-group">
+                    <label for="exampleFormControlInput3">Supervisor:</label>
+                    <select id="id_supervisor" wire:model="id_supervisor" class="form-control">
+                        <option value=''>Choose a Supervisor</option>
+                        @foreach($supervisor as $item)
+                            @if($this->division_id ==  $item->division_id)
+                            <option value="{{$item->id_supervisor}}">{{$item->name}}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                @elseif($this->role_id == '3' | $this->role_id == '4')
                 <div class="form-group">
                     <label for="exampleFormControlInput3">Division:</label>
                     <select id="division_id" wire:model="division_id" class="form-control">

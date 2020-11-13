@@ -99,6 +99,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.data-division')}}" class="nav-link">
+                            <i class="nav-icon far fa-file-alt"></i>
+                            <p>
+                                DIVISION
+                            </p>
+                        </a>
+                    </li>
                    
                     <li class="nav-item">
                         <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
@@ -277,11 +285,17 @@
             </div>
             <main class="container main">
                 @if (session()->has('message'))
-                    <div class="alert alert-success">
-                        {{ session('message') }}
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                    
+                </div>
+                    @yield('content')
+                @elseif(session()->has('warning'))
+                    <div class="alert alert-warning">
+                        {{ session('warning') }}
                         
                     </div>
-                    @yield('content')
+                        @yield('content')
                 @else
                     @yield('content')
                 @endif

@@ -37,5 +37,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::livewire('/edit/user/{id}', 'admin.edit-user')->name('admin.edit-user');
     Route::livewire('/data-mom', 'admin.data-mom')->name('admin.data-mom');
     Route::livewire('/view/mom/{id}', 'admin.view-mom')->name('admin.view-mom');
+    Route::livewire('/data-division', 'admin.data-division')->name('admin.data-division');
+    Route::livewire('/create-division', 'admin.create-division')->name('admin.create-division');
     // Route::get('/home', 'HomeController@index')->name('home');
 });

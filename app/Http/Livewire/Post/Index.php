@@ -27,9 +27,6 @@ class Index extends Component
             $users = User::all();
         }
 
-        return view(
-            'livewire.post.index',
-            compact('posts', 'users')
-        );
+        return view('livewire.post.index', compact('posts', 'users'));
     }
 }
