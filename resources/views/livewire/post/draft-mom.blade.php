@@ -10,21 +10,25 @@
                 <div class="row">
                         @role('Staff')
                             @if($post->status == '0')
-                                <div class="col-md-2 py-md-5 py-sm-3 text-warning text-center">
+                                <div class="col-md-2 py-md-2 py-sm-3 text-warning text-center">
+                                    <i class="fas fa-exclamation-circle fa-3x mb-2"></i>
                                     pending
                                 </div>
                             @elseif($post->status=='1')
-                                <div class="col-md-2 py-md-5 py-sm-3 text-danger text-center">
+                                <div class="col-md-2 py-md-2 py-sm-3 text-danger text-center">
+                                    <i class="fas fa-times-circle fa-3x mb-2"></i><br>
                                     Not Approved
                                 </div>
                             @endif
                         @elserole('Supervisor')
-                            <div class="col-md-2 py-md-5 py-sm-3 text-warning text-center">
-                               pending
+                            <div class="col-md-2 py-md-2 py-sm-3 text-warning text-center">
+                                <i class="fas fa-exclamation-circle fa-3x mb-2"></i>
+                                pending
                             </div>
                         @else
-                            <div class="col-md-2 py-md-4 py-sm-3 text-primary text-center">
-                                Waiting for Manager Approval
+                            <div class="col-md-2 py-md-2 py-sm-3 text-primary text-center">
+                                <i class="fas fa-spinner fa-3x mb-2"></i>
+                                Waiting Last Approval
                             </div>
                         @endrole
                     

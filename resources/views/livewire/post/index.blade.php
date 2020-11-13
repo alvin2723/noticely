@@ -7,8 +7,9 @@
         <div class="card rounded shadow post-card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-2 py-md-5 py-sm-2 text-success">
-                        sdfsdfsd
+                    <div class="col-md-2 py-md-2 py-sm-2 text-success px-0 text-center" style="margin: 0">
+                        <span style="font-size:28px">{{$post->count_attendee}}</span> <br>
+                        <span class="text-left">Attendees</span>
                     </div>
                     <div class="col-md-10">
                         <h3 style="text-transform: capitalize;">{{$post->title_mom}}</h3>

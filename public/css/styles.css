@@ -435,8 +435,10 @@
         text-align: center;
     }
 
-    .notfound {
-        color: black;
+    /* untuk style icon di setiap draft mom */
+    .icon-status {
+        font-size: 40px;
+        margin: 0 10px 15px 10px;
     }
 
 

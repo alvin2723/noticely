@@ -46,7 +46,9 @@ class CreateMom extends Component
     }
     public function saveData($result)
     {
-        $mom_name = MinuteOfMeeting::where('title_mom', $this->title_mom);
+        $mom_name = MinuteOfMeeting::where('title_mom', $this->title_mom)->first();
+
+
         if ($mom_name) {
             session()->flash('warning', 'This Title MOM already Exists, Please Enter Another Title!');
             return redirect()->route('post.index');
@@ -59,14 +61,15 @@ class CreateMom extends Component
                 'end_mom' => $this->end_mom,
                 'objective_mom' => $this->objective_mom,
                 'decision_made' => $this->decision_made,
+                'count_attendee' => count($result),
                 'status' => $this->status,
-
-
             ]);
+
             foreach ($result as $attendee) {
                 DB::table('user_mom')->insert([
                     'id_mom' => $mom->id,
-                    'id_attendee' => $attendee
+                    'id_attendee' => $attendee,
+
                 ]);
             }
             $this->mailConfirm();

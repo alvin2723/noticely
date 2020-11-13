@@ -19,6 +19,8 @@ class Index extends Component
             ->select('mom.*', 'staff.name')
             ->where('mom.status', '=', '3')->get();
 
+
+
         if (Auth::user()->hasRole('Supervisor|Staff')) {
             $users = User::join('staff', 'staff.id_users', '=', 'users.id')
                 ->join('supervisor', 'supervisor.id_supervisor', '=', 'staff.id_supervisor')
