@@ -27,8 +27,8 @@ body {
 }
 
 .form_wrapper {
-    width: 1000px;
-    height: 700px;
+    width: 800px;
+    height: 500px;
     /* this will help us center it*/
     margin: auto;
     background-color: var(--form_bg);
@@ -40,7 +40,7 @@ body {
     /* with a small gap in between them*/
     grid-gap: 5vw;
     /* add some padding around */
-    padding: 5vh 15px;
+    padding: 5vh;
 }
 
 .form_left {
@@ -54,9 +54,7 @@ body {
 
 
 .form_left img {
-
-    width: 350px;
-    height: 350px;
+    margin-bottom: 20px;
 }
 
 .form_right {

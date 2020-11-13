@@ -222,10 +222,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-rounded shadow p-2 mb-5 sticky-top"  role="navigation" style="background-color: #0078ff">
+        <nav class="navbar navbar-expand-md navbar-light navbar-rounded shadow p-2 mb-5 sticky-top"  role="navigation" >
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ route('post.index') }}">
-                    {{ config('app.name', 'Notice.ly') }}
+                    <img src="{{asset('image/logo.png')}}" alt="" width="200px" height="50px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -252,8 +252,8 @@
                         @else
                             <li class="nav-item dropdown">
                                 
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fa fa-user-circle mr-3"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fa fa-user-circle fa-2x mr-3"></i> {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"

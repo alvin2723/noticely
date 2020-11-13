@@ -167,12 +167,12 @@
 <body>
     <div class="form_wrapper">
         <div class="form_left">
-            <h1>Notice.ly</h1>
-            <img src="{{asset('image/group.png')}}" alt="computer icon">
+            <img src="{{asset('image/logo.png')}}" alt="">
+            <img src="{{asset('image/group.png')}}" width="250px" height="250px">
         </div>
         <form class="form_right" method="POST" action="{{ route('login') }}">
             @csrf
-                <h1>Employee Login</h1>
+                <h1>Login</h1>
                 <div class="input_container">
                     <i class="fas fa-envelope"></i>
                     <input id="email" type="email" class="input_field  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
