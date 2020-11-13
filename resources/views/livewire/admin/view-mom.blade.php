@@ -55,33 +55,23 @@
                         <table class="table table-border table-hover  no-margin">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Division</th>
+                                {{-- <th scope="col">#</th> --}}
+                                <th scope="col" class="text-center">Name</th>
+                                <th scope="col" class="text-center">Email</th>
+                                <th scope="col" class="text-center">Division</th>
                             </tr>
                             </thead>
                             <tbody>
+                       
+                            @foreach($attendee as $item)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                {{-- <th scope="row">{{$loop->index}}</th> --}}
+                                <td class="text-center">{{$item->name}}</td>
+                                <td class="text-center">{{$item->email}}</td>
+                                <td class="text-center">{{$item->division_name}}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                           @endforeach
                             </tbody>
-                            
                         </table>
                     </div>
                 </div>
