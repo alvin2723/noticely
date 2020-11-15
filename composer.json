@@ -17,7 +17,8 @@
         "laravel/ui": "^2.4",
         "laravelcollective/html": "^6.2",
         "livewire/livewire": "v1.x",
-        "spatie/laravel-permission": "^3.17"
+        "spatie/laravel-permission": "^3.17",
+        "twilio/sdk": "^6.12"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

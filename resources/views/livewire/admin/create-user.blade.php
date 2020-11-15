@@ -25,8 +25,16 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput3">Phone:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="08123123" wire:model="phone">
-                    @error('phone') <span class="text-danger">{{ $message }}</span>@enderror
+                    <div class="input-group mb-2">
+                      
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">+62</div>
+                        </div>
+                        <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="81231235678" wire:model="phone">
+                        @error('phone') <span class="text-danger">{{ $message }}</span>@enderror
+                      </div>
+                  
+                    
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput3">Role:</label>

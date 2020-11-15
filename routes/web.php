@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth', 'role:Staff|Supervisor|Manager']], functi
     Route::livewire('/draft-detail-mom/{id_mom}', 'post.draft-detail-mom')->name('post.draft-detail-mom');
     Route::livewire('/edit-mom/{id_mom}', 'post.edit-mom')->name('post.edit-mom');
     Route::livewire('/division', 'post.divisi')->name('post.divisi');
+    Route::livewire('/sms', 'post.sendsms')->name('post.sendsms');
 });
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::livewire('/dashboard', 'admin.dashboard')->name('admin.dashboard');

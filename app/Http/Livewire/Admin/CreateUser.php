@@ -83,7 +83,7 @@ class CreateUser extends Component
             'name' => $this->name,
             'division_id' => $this->division_id,
             'alamat' => $this->alamat,
-            'phone' => $this->phone
+            'phone' => '+62' . $this->phone
 
         ]);
     }
