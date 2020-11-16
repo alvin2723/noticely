@@ -88,7 +88,8 @@ class CreateMom extends Component
             'supervisor' => $super_user->email,
         );
 
-        Mail::to($data['supervisor'])->send(new SendMail($data));
+        // Mail::to($data['supervisor'])->send(new SendMail($data));
+        Mail::to('alvinjulian87@gmail.com')->send(new SendMail($data));
     }
     public function store()
     {
@@ -99,8 +100,6 @@ class CreateMom extends Component
         $this->validateData();
 
         $this->saveData($result);
-
-
 
         $this->resetInputFields();
 

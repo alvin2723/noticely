@@ -31,10 +31,12 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        
-        $akses = $this->from($this->data['staff_email'])->subject('New Minute of Meeting Approval Request')
-                ->view('dynamic_email')->with('data', $this->data);
-       
-        // return $this->view('view.name');
+
+        // $akses = $this->from($this->data['staff_email'])->subject('New Minute of Meeting Approval Request')
+        //         ->view('dynamic_email')->with('data', $this->data);
+        $akses = $this->from('alvinjulian62@gmail.com')->subject('New Minute of Meeting Approval Request')
+            ->view('dynamic_email')->with('data', $this->data);
+
+        return view('livewire.post.draft-mom');
     }
 }

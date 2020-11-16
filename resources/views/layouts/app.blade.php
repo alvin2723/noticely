@@ -225,7 +225,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-rounded shadow p-2 mb-5 sticky-top"  role="navigation" >
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ route('post.index') }}">
-                    <img src="{{asset('image/logo.png')}}" alt="" width="200px" height="50px">
+                    <img src="{{asset('image/logo.png')}}" alt="" width="150px" height="40px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
