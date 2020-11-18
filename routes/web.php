@@ -40,5 +40,6 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::livewire('/view/mom/{id}', 'admin.view-mom')->name('admin.view-mom');
     Route::livewire('/data-division', 'admin.data-division')->name('admin.data-division');
     Route::livewire('/create-division', 'admin.create-division')->name('admin.create-division');
+    Route::livewire('/data-notif', 'admin.data-notif')->name('admin.data-notif');
     // Route::get('/home', 'HomeController@index')->name('home');
 });

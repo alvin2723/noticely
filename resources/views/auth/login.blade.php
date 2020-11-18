@@ -165,7 +165,7 @@
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
 <body>
-    <div class="form_wrapper">
+    {{-- <div class="form_wrapper">
         <div class="form_left">
             <img src="{{asset('image/logo.png')}}" alt="">
             <img src="{{asset('image/group.png')}}" width="250px" height="250px">
@@ -176,7 +176,6 @@
                 <div class="input_container">
                     <i class="fas fa-envelope"></i>
                     <input id="email" type="email" class="input_field  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                    {{-- <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus> --}}
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -198,58 +197,55 @@
                 <span id='create_account'>
                  
                 </span>
-                {{-- <div class="form-group row">
-                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-md-6 offset-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                            <label class="form-check-label" for="remember">
-                                {{ __('Remember Me') }}
-                            </label>
-                        </div>
-                    </div>
-                </div> --}}
-
-                {{-- <div class="form-group row mb-0">
-                    <div class="col-md-8 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Login') }}
-                        </button>
-
-                        @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                        @endif
-                    </div>
-                </div> --}}
-            
-            {{-- <div class="input_container">
-                <i class="fas fa-envelope"></i>
-                <input placeholder="Email" type="email" name="Email" id="field_email" class='input_field'>
-            </div>
-            <div class="input_container">
-                <i class="fas fa-lock"></i>
-                <input  placeholder="Password" type="password" name="Password" id="field_password" class='input_field'>
-            </div>
-            <input type="submit" value="Login" id='input_submit' class='input_field'> --}}
-            {{-- <span>Forgot <a href="#"> Username / Password ?</a></span>
-             --}}
+              
         </form>
-    </div>
+    </div> --}}
+    <div class="container">
+        
+        <div class="forms-container">
+        <img src="{{asset('image/logo.png')}}" alt="" height="100px" class="logo-image">
+          <div class="signin-signup">
+          
+            <form class="form_right" method="POST" action="{{ route('login') }}">
+                @csrf
+               
+              <h2 class="title">Sign in</h2>
+              <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input id="email" type="email" class="input_field  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                 @enderror
+              </div>
+              <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input id="password" type="password" class="input_field @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                 @enderror
+              </div>
+              <button type="submit" value="Login" class="btn solid"> {{ __('Login') }}</button>
+           
+            </form>
+            
+          </div>
+        </div>
+  
+        <div class="panels-container">
+          <div class="panel left-panel">
+            <div class="content">
+               
+               
+            </div>
+            <img src="{{asset('image/log.svg')}}" class="image" alt="" />
+          </div>
+         
+        </div>
+      </div>
+  
 </body>
 

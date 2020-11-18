@@ -39,20 +39,6 @@
                         @error('decision_made') <span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 
-             
-                <div class="form-group">
-                    <label for="exampleFormControlInput7">Send to :</label><br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="notif.email">
-                        <label class="form-check-label mr-5" for="defaultCheck1">
-                            EMAIL
-                        </label>
-                        <input class="form-check-input" type="checkbox" id="defaultCheck2" wire:model="notif.wa">
-                        <label class="form-check-label" for="defaultCheck2">
-                            WHATSAPP
-                        </label>
-                    </div>
-                </div>
                 
                 <button type="submit" class="btn btn-success">Edit</button>
             </form>

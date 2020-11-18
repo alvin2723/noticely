@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Post;
 
 use Livewire\Component;
 use App\MinuteOfMeeting;
+use App\Attendee;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
@@ -20,8 +21,7 @@ class Detailmom extends Component
     }
     public function render()
     {
-        $attendee = DB::table('user_mom')
-            ->join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
+        $attendee = Attendee::join('staff', 'staff.id_staff', '=', 'user_mom.id_attendee')
             ->join('users', 'users.id', '=', 'staff.id_users')
             ->join('division', 'division.id', '=', 'staff.division_id')
             ->where('id_mom', '=', $this->mom_id)->get();

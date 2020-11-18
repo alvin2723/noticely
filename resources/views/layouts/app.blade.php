@@ -100,6 +100,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{route('admin.data-notif')}}" class="nav-link">
+                            <i class="nav-icon far fa-file-alt"></i>
+                            <p>
+                                Notification
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('admin.data-division')}}" class="nav-link">
                             <i class="nav-icon far fa-file-alt"></i>
                             <p>
@@ -222,7 +230,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-rounded shadow p-2 mb-5 sticky-top"  role="navigation" >
+        <nav class="navbar navbar-expand-md navbar-light navbar-rounded shadow  mb-5 sticky-top" style="background-color: white"  role="navigation" >
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ route('post.index') }}">
                     <img src="{{asset('image/logo.png')}}" alt="" width="150px" height="40px">
@@ -274,15 +282,15 @@
         <div class="container" id="scroll">
             <div class="side-menu">
                 <div class="side-content">
-                    @hasanyrole('Staff|Supervisor|Manager')
+                    
                     <a href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i><p style="margin: 0; padding:0; display:inline-block">HOME</p></a>
                     <a href="{{ route('post.draft-mom') }}"><i class="fas fa-book-open" style="margin-right: 10px"></i><p style="margin: 0; padding:0; display:inline-block">DRAFT MOM</p></a>
                     <a href="{{ route('post.divisi') }}"><i class="fas fa-user" style="margin-right: 10px"></i><p style="margin: 0; padding:0; display:inline-block">DIVISI</p></a>
-                    @endhasanyrole
+                    
                 </div>
                
-
             </div>
+            <img src="{{asset('image/meet.svg')}}" class="side-image" alt="">
             <main class="container main">
                 @if (session()->has('message'))
                 <div class="alert alert-success">

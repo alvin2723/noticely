@@ -71,7 +71,7 @@
                         
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="exampleFormControlInput7">Send to :</label><br>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="defaultCheck1" wire:model="notif.email">
@@ -83,7 +83,8 @@
                                 WHATSAPP
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
+                 
                     {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">Create</button> --}}
                     
                     <button wire:click.prevent="store()" class="btn btn-success" onclick="modal();">Create</button>

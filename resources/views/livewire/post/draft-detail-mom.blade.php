@@ -98,13 +98,13 @@
             <div class="card-body">
                 @role('Staff')
                     @if($data->status == '1')
-                        <p class="py-2 text-danger" style="font-size: 20px">sdfsdfsfsdfsdf</p>
+                        <p class="py-2 text-danger" style="font-size: 20px">{{$note->note_desc}}</p>
                         
                         <a href="{{ route('post.edit-mom', $data->id) }}" type="button" class="btn btn-block btn-success" style="margin:0">Edit MOM</a>
                     @else
                         <h4 class="py-2 text-center text-warning">Waiting for Approval</h4>
                     @endif
-                @else
+                @elserole('Supervisor')
                     <div class="row">
                         <div class="col-6 p-2">
                             <button wire:click="approve()" type="button" class="btn btn-block btn-lg btn-success">APPROVE</button>
@@ -118,7 +118,21 @@
                             
                         </div>
                     </div>
-                    
+                @else
+                    <div class="row">
+                        <div class="col-6 p-2">
+                            <button type="button" class="btn btn-block btn-lg btn-outline-success" data-toggle="modal" data-target="#exampleModalApprove">APPROVE</button>
+                            {{-- <button wire:click="approve()" type="button" class="btn btn-block btn-lg btn-success">APPROVE</button> --}}
+                        
+                            {{-- <a href="" type="button" class="btn btn-block btn-lg btn-success">APPROVE</a> --}}
+                        </div>
+                        <div class="col-6 p-2">
+                            <button type="button" class="btn btn-block btn-lg btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
+                                DECLINE
+                            </button>
+                            
+                        </div>
+                    </div>          
                 @endrole
             </div>
         </div>
@@ -144,6 +158,43 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
                         <button wire:click.prevent="store_note()" type="submit" class="btn btn-primary">Create Note</button>
+                    </div>
+                </form>
+                   
+
+                
+            </div>
+        </div>
+    </div>
+    <div wire:ignore.self class="modal fade" id="exampleModalApprove"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Send Notification of Approval to Staff</h5>
+                    
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Select:</label>
+                                <div class="form-check">
+                                    <label class="form-check-label" for="radio1">
+                                        <input type="radio" class="form-check-input" id="radio1" wire:model="notif" name="notif" value="email">Email
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" for="radio2">
+                                        <input type="radio" class="form-check-input" id="radio2" 
+                                        wire:model="notif" name="notif" value="wa" >WhatsApp
+                                    </label>
+                                </div>
+                              
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button wire:click.prevent="approve()" type="submit" class="btn btn-primary">Send Notif</button>
+                        <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
                     </div>
                 </form>
                    

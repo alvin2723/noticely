@@ -7,10 +7,11 @@ use App\MinuteOfMeeting;
 use App\User;
 use App\Staff;
 use App\Supervisor;
+use App\Notif;
+use App\Attendee;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMail;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -19,7 +20,6 @@ class CreateMom extends Component
 {
     public $title_mom, $date_mom, $start_mom, $end_mom, $objective_mom, $decision_made, $status = '0';
     public $attendees = [];
-    public $notif = [];
 
     public function resetInputFields()
     {
@@ -40,7 +40,6 @@ class CreateMom extends Component
             'objective_mom' => 'required',
             'decision_made' => 'required',
             'attendees' => 'required',
-            'notif' => 'required',
 
         ]);
     }
@@ -66,36 +65,21 @@ class CreateMom extends Component
             ]);
 
             foreach ($result as $attendee) {
-                DB::table('user_mom')->insert([
+                Attendee::create([
                     'id_mom' => $mom->id,
                     'id_attendee' => $attendee,
 
                 ]);
             }
-            $this->mailConfirm();
 
             session()->flash('message', 'New MOM Added.');
         }
     }
-    public function mailConfirm()
-    {
-        $staff = Staff::where('staff.id_users', Auth::id())->first();
-        $supervisor = Supervisor::where('supervisor.id_supervisor', '=', $staff->id_supervisor)->first();
-        $super_user = User::where('id', $supervisor->id_users)->first();
-        $data = array(
-            'staff_name' => $staff->name,
-            'staff_email' => Auth::user()->email,
-            'supervisor' => $super_user->email,
-        );
 
-        // Mail::to($data['supervisor'])->send(new SendMail($data));
-        Mail::to('alvinjulian87@gmail.com')->send(new SendMail($data));
-    }
     public function store()
     {
 
         $result = array_keys(array_filter($this->attendees));
-        $notification = array_keys(array_filter($this->notif));
 
         $this->validateData();
 

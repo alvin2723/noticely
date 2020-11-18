@@ -31,7 +31,7 @@ class CreateUser extends Component
             'email' => 'required|email',
             'password' => 'required|min:6',
             'alamat' => 'required|min:6',
-            'phone' => 'required|min:12',
+            'phone' => 'required|min:11',
             'role_id' => 'required',
             'division_id' => 'required',
 
@@ -62,7 +62,7 @@ class CreateUser extends Component
             'name' => $this->name,
             'division_id' => $this->division_id,
             'alamat' => $this->alamat,
-            'phone' => $this->phone
+            'phone' => '62' . $this->phone
 
         ]);
     }
@@ -83,7 +83,7 @@ class CreateUser extends Component
             'name' => $this->name,
             'division_id' => $this->division_id,
             'alamat' => $this->alamat,
-            'phone' => '+62' . $this->phone
+            'phone' => '62' . $this->phone
 
         ]);
     }
@@ -101,7 +101,7 @@ class CreateUser extends Component
             'division_id' => $this->division_id,
             'name' => $this->name,
             'alamat' => $this->alamat,
-            'phone' => $this->phone
+            'phone' => '62' . $this->phone
 
         ]);
     }
