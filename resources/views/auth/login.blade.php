@@ -162,44 +162,11 @@
     crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
 <body>
-    {{-- <div class="form_wrapper">
-        <div class="form_left">
-            <img src="{{asset('image/logo.png')}}" alt="">
-            <img src="{{asset('image/group.png')}}" width="250px" height="250px">
-        </div>
-        <form class="form_right" method="POST" action="{{ route('login') }}">
-            @csrf
-                <h1>Login</h1>
-                <div class="input_container">
-                    <i class="fas fa-envelope"></i>
-                    <input id="email" type="email" class="input_field  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                     @enderror
-                </div>
-                <div class="input_container">
-                    <i class="fas fa-lock"></i>
-                    <input id="password" type="password" class="input_field @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                     @enderror
-                </div>
-               
-                <button type="submit" id='input_submit' class='input_field'> {{ __('Login') }}</button>
-                <span></span>
-                <span id='create_account'>
-                 
-                </span>
-              
-        </form>
-    </div> --}}
+
     <div class="container">
         
         <div class="forms-container">
@@ -210,24 +177,25 @@
                 @csrf
                
               <h2 class="title">Sign in</h2>
-              <div class="input-field">
-                <i class="fas fa-envelope"></i>
-                <input id="email" type="email" class="input_field  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            
+                <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                </div>
                 @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                 @enderror
-              </div>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
               <div class="input-field">
                 <i class="fas fa-lock"></i>
-                <input id="password" type="password" class="input_field @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                 @enderror
+                <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
               </div>
+              @error('password')
+              <span class="invalid-feedback" role="alert">
+                  <strong >{{ $message }}</strong>
+              </span>
+              @enderror
               <button type="submit" value="Login" class="btn solid"> {{ __('Login') }}</button>
            
             </form>

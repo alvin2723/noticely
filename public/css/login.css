@@ -79,7 +79,6 @@ form.sign-in-form {
     width: 100%;
     background-color: #f0f0f0;
     margin: 10px 0;
-    height: 55px;
     border-radius: 55px;
     display: grid;
     grid-template-columns: 15% 85%;
@@ -109,6 +108,18 @@ form.sign-in-form {
     color: #aaa;
     font-weight: 500;
 }
+
+.invalid-feedback {
+    max-width: 380px;
+    width: 100%;
+    border-radius: 55px;
+
+    padding: 0 0.4rem;
+    position: relative;
+    font-size: 80%;
+    color: #e3342f;
+}
+
 
 .social-text {
     padding: 0.7rem 0;
@@ -278,6 +289,7 @@ form.sign-in-form {
 .container.sign-up-mode .right-panel {
     pointer-events: all;
 }
+
 
 @media (max-width: 870px) {
     .logo-image {
