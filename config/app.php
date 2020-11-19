@@ -139,7 +139,6 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Nexmo\Laravel\NexmoServiceProvider::class,
 
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
@@ -194,7 +193,6 @@ return [
     */
 
     'aliases' => [
-        'Nexmo' => \Nexmo\Laravel\Facade\Nexmo::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'App' => Illuminate\Support\Facades\App::class,
