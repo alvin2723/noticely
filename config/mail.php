@@ -40,7 +40,7 @@ return [
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME', 'alvinjulian62@gmail.com'),
-            'password' => env('MAIL_PASSWORD', 'bl4ckj4ck'),
+            'password' => env('MAIL_PASSWORD', 'Alvinjulian87'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -49,13 +49,7 @@ return [
             'transport' => 'ses',
         ],
 
-        'stream' => [
-            'ssl' => [
-                'allow_self_signed' => true,
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-            ],
-        ],
+
 
         'postmark' => [
             'transport' => 'postmark',

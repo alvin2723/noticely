@@ -39,8 +39,7 @@ class SendMail extends Mailable
         $akses = $this->from($this->data['admin_email'])->subject('New Minute of Meeting Approval Request')
             ->view('dynamic_email')->with('data', $this->data);
 
-        $mom = Notif::where('id', $this->data['id_mom']);
-        $mom->delete();
+
         session()->flash('message', 'Notif has been sent to Staff');
         return view('livewire.admin.data-notif');
     }
