@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
+use App\Notif;
 
 class SendMail extends Mailable
 {
@@ -39,7 +39,8 @@ class SendMail extends Mailable
         $akses = $this->from($this->data['admin_email'])->subject('New Minute of Meeting Approval Request')
             ->view('dynamic_email')->with('data', $this->data);
         session()->flash('message', 'Notif has been sent to Staff');
-
+        $mom = Notif::where('id', $this->data['id_mom']);
+        $mom->delete();
         return view('livewire.admin.data-notif');
     }
 }

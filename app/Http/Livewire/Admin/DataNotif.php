@@ -26,6 +26,7 @@ class DataNotif extends Component
             'admin_email' => Auth::user()->email,
             'title_mom' => $this->notif->title_mom,
             'staff_email' => $this->notif->email,
+            'id_mom' => $this->notif->id_mom,
         );
 
         Mail::to($data['staff_email'])->send(new SendMail($data));
