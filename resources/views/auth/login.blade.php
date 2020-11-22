@@ -162,6 +162,7 @@
     crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <title>Notice LY</title>
     
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
