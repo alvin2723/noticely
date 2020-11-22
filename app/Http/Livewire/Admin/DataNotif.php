@@ -38,7 +38,6 @@ class DataNotif extends Component
             'headers' => ['Content-Type' => 'application/json'],
             'json' => $json
         ]);
-        session()->flash('message', 'Notif has been sent to Staff');
     }
     public function sendWhatsapp()
     {
@@ -48,10 +47,13 @@ class DataNotif extends Component
             "destination" => (int)$this->notif->phone,
             "type" => "text",
             "body" => [
-                "text" => "Hello Word"
+                "text" => "Your Minute Of Meeting that has a title " . $this->notif->title_mom . "has Been Approved by Manager"
             ]
         ];
         $this->sendData($json);
+        $data = Notif::where('id_mom', $this->notif->id_mom);
+        $data->delete();
+        session()->flash('message', 'Notif has been sent to Staff');
     }
 
     public function notif($id)
@@ -69,7 +71,6 @@ class DataNotif extends Component
 
             $this->sendWhatsapp();
         }
-        $this->notif->delete();
     }
     public function render()
     {
