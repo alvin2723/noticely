@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
   <script src="{{ asset('js/app.js') }}"></script>
   @livewireStyles
-  <title>@yield('title')</title>
+  <title>Notice LY</title>
  
 
   
@@ -59,7 +59,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="#" class="brand-link text-center">
-            <span class="brand-text font-weight-light ">Admin Noticely</span>
+            <span class="brand-text font-weight-light ">Admin Notice LY</span>
         </a>
         <!-- Sidebar -->
         <div class="sidebar">
@@ -101,7 +101,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{route('admin.data-notif')}}" class="nav-link">
-                            <i class="nav-icon far fa-file-alt"></i>
+                            <i class="nav-icon far fa-bell"></i>
                             <p>
                                 Notification
                             </p>
@@ -109,7 +109,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{route('admin.data-division')}}" class="nav-link">
-                            <i class="nav-icon far fa-file-alt"></i>
+                            <i class="nav-icon far fa-building"></i>
                             <p>
                                 DIVISION
                             </p>
@@ -207,7 +207,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Notice.ly') }}</title>
+    <title>Notice LY</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

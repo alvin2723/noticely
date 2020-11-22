@@ -21,7 +21,7 @@ class CreateDivision extends Component
     public function store()
     {
         $this->validateData();
-        $divisi = Division::where('division_name', $this->division_name)->get();
+        $divisi = Division::where('division_name', $this->division_name)->first();
         if ($divisi) {
             session()->flash('warning', 'Division Name can not be the same!');
             return redirect()->route('admin.data-division');
@@ -29,8 +29,10 @@ class CreateDivision extends Component
             Division::create([
                 'division_name' => $this->division_name
             ]);
+
             //redirect
             $this->resetInputFields();
+            session()->flash('success', 'New Division Added');
             return redirect()->route('admin.data-division');
         }
     }
