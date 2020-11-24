@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth', 'role:Staff|Supervisor|Manager']], functi
 });
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::livewire('/dashboard', 'admin.dashboard')->name('admin.dashboard');
+
     Route::livewire('/data-staff', 'admin.users')->name('admin.users');
     Route::livewire('/data-manager', 'admin.users-manager')->name('admin.users-manager');
     Route::livewire('/data-supervisor', 'admin.users-supervisor')->name('admin.users-supervisor');
