@@ -1,43 +1,43 @@
 <div style="margin: 0">
     <div class="col-md-9 col-sm-12">
-        <div class="card rounded shadow p-md-5" style="width: 100%">
+        <div class="card rounded shadow p-md-5">
             <div class="card-body">
                 <form>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12 col-xs-12">
                         <label for="exampleFormControlInput1">Title Minute of Meeting:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title_mom">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title_mom" autofocus>
                         @error('title_mom') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12 col-xs-12">
                         <label for="exampleFormControlInput2">Date Minute of Meeting:</label>
-                        <input type="date" class="form-control" id="exampleFormControlInput2" placeholder="12/07/2020" wire:model="date_mom">
+                        <input type="date" class="form-control" id="exampleFormControlInput2" placeholder="12/07/2020" wire:model="date_mom" autofocus>
                         @error('date_mom') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
-                    <div class="form-group form-row">
+                    <div class="form-group form-row col-sm-12 col-xs-12">
                         <div class="col">
                             <label for="exampleFormControlInput3">Start:</label>
-                            <input type="time" class="form-control" id="exampleFormControlInput3" placeholder="08:00" wire:model="start_mom">
+                            <input type="time" class="form-control" id="exampleFormControlInput3" placeholder="08:00" wire:model="start_mom" autofocus>
                             @error('start_mom') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                         <div class="col">
                             <label for="exampleFormControlInput4">End:</label>
-                            <input type="time" class="form-control" id="exampleFormControlInput4" placeholder="08:00" wire:model="end_mom">
+                            <input type="time" class="form-control" id="exampleFormControlInput4" placeholder="08:00" wire:model="end_mom" autofocus>
                             @error('end_mom') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                         
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12 col-xs-12">
                         <label for="exampleFormControlInput5">Objective of Minute of Meeting:</label>
-                        <textarea type="text" class="form-control" id="exampleFormControlInput5" wire:model="objective_mom" placeholder="Enter Objective..."></textarea>
+                        <textarea type="text" class="form-control" id="exampleFormControlInput5" wire:model="objective_mom" placeholder="Enter Objective..." autofocus></textarea>
                             @error('objective_mom') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-sm-12 col-xs-12">
                         <label for="exampleFormControlInput6">Decision Made:</label>
-                        <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="decision_made" placeholder="Enter Decision..."></textarea>
+                        <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="decision_made" placeholder="Enter Decision..." autofocus></textarea>
                             @error('decision_made') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group col-sm-12 col-xs-12">
                         <label for="exampleFormControlInput6">Attendees:</label><br>
                         <div class="accordion" id="accordionExample">
                             @foreach($division as $divisi)

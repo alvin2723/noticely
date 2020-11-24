@@ -3,9 +3,9 @@
     <div class="card rounded shadow">
         <div class="card-body p-5">
             <form  wire:submit.prevent="store">
-                <div class="form-group">
+                <div class="form-group col-sm-12 col-xs-12">
                     <label for="exampleFormControlInput1">Division Name:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Employee Name" wire:model="division_name">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Employee Name" wire:model="division_name" autofocus>
                     @error('division_name') <span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>

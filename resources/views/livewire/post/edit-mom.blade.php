@@ -4,7 +4,7 @@
             <form  wire:submit.prevent="update">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Title Minute of Meeting:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title_mom">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title_mom" autofocus>
                     @error('title_mom') <span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 <div class="form-group">
@@ -30,12 +30,12 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput5">Objective of Minute of Meeting:</label>
-                    <textarea type="text" class="form-control" id="exampleFormControlInput5" wire:model="objective_mom" placeholder="Enter Objective..."></textarea>
+                    <textarea type="text" class="form-control" id="exampleFormControlInput5" wire:model="objective_mom" placeholder="Enter Objective..." autofocus></textarea>
                         @error('objective_mom') <span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput6">Decision Made:</label>
-                    <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="decision_made" placeholder="Enter Decision..."></textarea>
+                    <textarea type="text" class="form-control" id="exampleFormControlInput6" wire:model="decision_made" placeholder="Enter Decision..." autofocus></textarea>
                         @error('decision_made') <span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 
