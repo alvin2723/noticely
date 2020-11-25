@@ -17,7 +17,7 @@ class Index extends Component
     {
         $posts = MinuteOfMeeting::join('staff', 'staff.id_users', '=', 'mom.id_users')
             ->select('mom.*', 'staff.name')
-            ->where('mom.status', '=', '3')->get();
+            ->where('mom.status', '=', '2')->get();
 
         if (Auth::user()->hasRole('Supervisor|Staff')) {
             $users = User::join('staff', 'staff.id_users', '=', 'users.id')

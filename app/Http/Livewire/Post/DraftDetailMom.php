@@ -33,14 +33,15 @@ class DraftDetailMom extends Component
     public function store_note()
     {
         $this->validateData();
-        MinuteOfMeeting::where('id', $this->mom_id)
-            ->update([
-                'status' => 1
-            ]);
-        NoteMom::create([
+        $note = NoteMom::create([
             'id_mom' => $this->mom_id,
             'note_desc' => $this->notes_mom
         ]);
+        MinuteOfMeeting::where('id', $this->mom_id)
+            ->update([
+                'id_note' => $note
+            ]);
+
         session()->flash('message', 'Note Added.');
 
         return redirect()->route('post.draft-mom');
@@ -50,12 +51,12 @@ class DraftDetailMom extends Component
         if (Auth::user()->hasRole('Supervisor')) {
             MinuteOfMeeting::where('id', $this->mom_id)
                 ->update([
-                    'status' => 2
+                    'status' => 1
                 ]);
         } else {
             MinuteOfMeeting::where('id', $this->mom_id)
                 ->update([
-                    'status' => 3
+                    'status' => 2
                 ]);
             $this->createNotif();
         }
