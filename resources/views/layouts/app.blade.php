@@ -34,7 +34,7 @@
             </li>
         </ul>
         <!-- Messages Dropdown Menu -->
-        <ul class="navbar-nav ml-auto">
+        {{-- <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                                 
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -51,7 +51,7 @@
                     </form>
                 </div>
             </li>
-        </ul>
+        </ul> --}}
     </nav>
     <!-- /.navbar -->
 
@@ -260,8 +260,19 @@
                                 </li>
                             @endif
                         @else
-                            
-                            <li class="nav-item dropdown">
+                            <li class="nav-item  pt-3">
+                                <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                    <i class="nav-icon fas fa-sign-out-alt fa-rotate-180 mr-1"></i>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    <p style="display:inline-block">
+                                        LOGOUT
+                                    </p>
+                                </a>
+                            </li>
+                            {{-- <li class="nav-item dropdown">
                                 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="fa fa-user-circle fa-2x mr-3"></i> {{ Auth::user()->name }} <span class="caret"></span>
@@ -276,7 +287,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </li> --}}
                         @endguest
                     </ul>
                 </div>
