@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MomNote extends Migration
+class TableMom extends Migration
 {
     /**
      * Run the migrations.
@@ -24,8 +24,7 @@ class MomNote extends Migration
             $table->string('objective_mom');
             $table->string('decision_made');
             $table->integer('count_attendee');
-            $table->unsignedBigInteger('id_note');
-            $table->foreign('id')->references('id')->on('note_mom');
+            $table->integer('created_note');
             $table->string('status');
             $table->rememberToken();
             $table->timestamps();
@@ -61,6 +60,9 @@ class MomNote extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('mom');
+        Schema::dropIfExists('user_mom');
+        Schema::dropIfExists('note_mom');
+        Schema::dropIfExists('notif');
     }
 }

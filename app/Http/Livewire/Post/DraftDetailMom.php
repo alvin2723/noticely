@@ -39,7 +39,7 @@ class DraftDetailMom extends Component
         ]);
         MinuteOfMeeting::where('id', $this->mom_id)
             ->update([
-                'id_note' => $note
+                'created_note' => 1
             ]);
 
         session()->flash('message', 'Note Added.');
@@ -75,11 +75,7 @@ class DraftDetailMom extends Component
     }
     public function approve()
     {
-        $note = NoteMom::where('note_mom.id_mom', $this->mom_id)->first();
 
-        if ($note) {
-            NoteMom::where('note_mom.id_mom', $this->mom_id)->delete();
-        }
         $this->update_status();
 
         session()->flash('message', 'Status Changed.');

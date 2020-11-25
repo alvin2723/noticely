@@ -83,7 +83,7 @@
     <div class="col-lg-4 col-md-5 right-box">
         <div class="card rounded shadow">
             @role('Staff')
-            @if($data->status == '1')
+            @if($data->created_note == '1')
             <div class="card-header blue-color">
                    
                 <h4  class="text-center">Notes For Change :</h4>
@@ -97,7 +97,7 @@
             
             <div class="card-body">
                 @role('Staff')
-                    @if($data->status == '1')
+                    @if($data->created_note == '1')
                         <p class="py-2 text-danger" style="font-size: 20px">{{$note->note_desc}}</p>
                         
                         <a href="{{ route('post.edit-mom', $data->id) }}" type="button" class="btn btn-block btn-success" style="margin:0">Edit MOM</a>

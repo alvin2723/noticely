@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class NoteMom extends Model
 {
     protected $table = 'note_mom';
+    protected $primarykey = 'id';
+
     /**
      * The attributes that are mass assignable.
      *

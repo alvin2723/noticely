@@ -61,6 +61,7 @@ class CreateMom extends Component
                 'objective_mom' => $this->objective_mom,
                 'decision_made' => $this->decision_made,
                 'count_attendee' => count($result),
+                'created_note' => 0,
                 'status' => $this->status,
             ]);
 

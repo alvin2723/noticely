@@ -9,12 +9,12 @@
             <div class="card-body">
                 <div class="row">
                         @role('Staff')
-                            @if($post->id_note==1)
+                            @if($post->created_note ==1)
                             <div class="col-md-2 py-md-2 py-sm-3 text-danger text-center">
                                 <i class="fas fa-times-circle fa-3x mb-2"></i><br>
                                 Not Approved
                             </div>
-                            @elseif($post->id_note == 0)
+                            @elseif($post->created_note == 0)
                                 <div class="col-md-2 py-md-2 py-sm-3 text-warning text-center">
                                     <i class="fas fa-exclamation-circle fa-3x mb-2"></i>
                                     pending
@@ -22,10 +22,12 @@
                             
                             @endif
                         @elserole('Supervisor')
+                            @if($post->created_note == 0)
                             <div class="col-md-2 py-md-2 py-sm-3 text-primary text-center">
                                 <i class="fas fa-spinner fa-3x mb-2"></i>
                                 Waiting for Approval
                             </div>
+                            @endif
                         @else
                             <div class="col-md-2 py-md-2 py-sm-3 text-primary text-center">
                                 <i class="fas fa-spinner fa-3x mb-2"></i>

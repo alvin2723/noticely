@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Post;
 use Livewire\Component;
 use App\MinuteOfMeeting;
 use App\Supervisor;
+use App\Manager;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -22,9 +23,10 @@ class DraftMom extends Component
 
             $posts = MinuteOfMeeting::join('staff', 'staff.id_users', '=', 'mom.id_users')
                 ->select('mom.*', 'staff.name')
-                ->where('status', '=', '0')->where('staff.id_supervisor', $supervisor->id_supervisor)->get();
+                ->where('created_note', '=', '0')->where('staff.id_supervisor', $supervisor->id_supervisor)->get();
         } else {
-            $manager = Supervisor::where('id_users', Auth::id())->first();
+            $manager = Manager::where('id_users', Auth::id())->first();
+
             $posts =  MinuteOfMeeting::join('staff', 'staff.id_users', '=', 'mom.id_users')
                 ->select('mom.*', 'staff.*')
                 ->where('status', '=', '1')->where('staff.division_id', $manager->division_id)->get();

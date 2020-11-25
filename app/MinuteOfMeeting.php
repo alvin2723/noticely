@@ -21,6 +21,7 @@ class MinuteOfMeeting extends Model
         'objective_mom',
         'decision_made',
         'count_attendee',
+        'created_note',
         'status',
     ];
 }

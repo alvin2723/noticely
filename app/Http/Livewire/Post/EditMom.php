@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Post;
 use Livewire\Component;
 use App\MinuteOfMeeting;
 use App\User;
+use App\NoteMom;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -52,9 +53,14 @@ class EditMom extends Component
                 'title_mom' => $this->title_mom,
                 'objective_mom' => $this->objective_mom,
                 'decision_made' => $this->decision_made,
+                'created_note' => 0,
                 'status' => 0
             ]);
+            $note = NoteMom::where('note_mom.id_mom', $this->id_mom)->first();
 
+            if ($note) {
+                NoteMom::where('note_mom.id_mom', $this->id_mom)->delete();
+            }
             session()->flash('message', 'MOM Updated.');
             return redirect()->route('post.draft-mom');
         }
