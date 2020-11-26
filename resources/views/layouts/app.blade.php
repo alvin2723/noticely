@@ -299,12 +299,12 @@
                     
                     <a href="{{ route('post.index') }}"><i class="fas fa-home" style="margin-right: 10px"></i><p style="margin: 0; padding:0; display:inline-block">HOME</p></a>
                     <a href="{{ route('post.draft-mom') }}"><i class="fas fa-book-open" style="margin-right: 10px"></i><p style="margin: 0; padding:0; display:inline-block">DRAFT MOM</p></a>
-                    <a href="{{ route('post.divisi') }}"><i class="fas fa-user" style="margin-right: 10px"></i><p style="margin: 0; padding:0; display:inline-block">DIVISI</p></a>
-                    
+                    <a href="{{ route('post.divisi') }}"><i class="fa fa-users" style="margin-right: 10px"></i><p style="margin: 0; padding:0; display:inline-block">DIVISION</p></a>
                 </div>
+                <img src="{{asset('image/meet.svg')}}" class="side-image" alt="">
                
+                
             </div>
-            <img src="{{asset('image/meet.svg')}}" class="side-image" alt="">
             <main class="container main">
                 @if (session()->has('message'))
                 <div class="alert alert-success">

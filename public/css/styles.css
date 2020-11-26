@@ -28,10 +28,9 @@
 }
 
 .side-image {
-    position: fixed;
-    bottom: 10%;
-    left: 18%;
-    width: 14%;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
     transition: transform 1.1s ease-in-out;
     transition-delay: 0.4s;
 }
@@ -178,14 +177,20 @@
 
 /* divisi page*/
 
+.all-person {
+    margin-left: 25%;
+}
+
 .one-person {
     background-color: #f7f5ec;
     text-align: center;
-    overflow: hidden;
     position: relative;
-    padding: 20px 30px 20px 30px;
+    overflow: hidden;
+    padding-top: 20px;
+
     text-align: center;
-    margin-right: 20px;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
 
 }
 
@@ -327,14 +332,7 @@
 }
 
 @media (max-width: 991.98px) {
-    .side-image {
-        position: fixed;
-        bottom: 10%;
-        left: 12%;
-        width: 18%;
-        transition: transform 1.1s ease-in-out;
-        transition-delay: 0.4s;
-    }
+
 
     .btn-create {
         transition: all 0.5s;
@@ -489,6 +487,18 @@
 
     .btn-create p {
         display: none;
+    }
+
+    .all-person {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .one-person {
+
+        margin-left: 0;
+        margin-bottom: 0.2rem;
+
     }
 
 

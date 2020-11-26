@@ -16,16 +16,15 @@
                     </select>
                     
                 </div>
+                <div class="row all-person">
                 @foreach ($users as $data)
                     @if($this->division_id == $data->division_id)
-                    <div class="row" style="margin-left:12%;margin-bottom:2rem">
-                        <div class="one-person col-md-5 col-sm-12">
-                            <div class="pic">
-                                <img src="{{ asset('image/1.png') }}"  alt="" >
-                            </div>
+                    
+                        <div class="one-person col-md-4 col-sm-12">
+                           
                             <div class="division-content">
                                 <h4 class="person-name">{{$data->name}}</h4>
-                                <span class="person-title"></span>
+                                <span class="person-title">{{$data->division_name}}</span>
                             </div>
                             <ul class="social">
                                 <li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -34,25 +33,10 @@
                                 <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
                             </ul>
                         </div>
-                        <div class="one-person col-md-5 col-sm-12" >
-                            <div class="pic">
-                        
-                                <img src="{{ asset('image/1.png') }}"  alt="" >
-                            </div>
-                            <div class="division-content">
-                                <h4 class="person-name"> sdfsdfsdf</h4>
-                                <span class="person-title">sdfsdfsdf </span>
-                            </div>
-                            <ul class="social">
-                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                            </ul>  
-                        </div>                    
-                    </div>
+                         
                     @endif
                 @endforeach
+                </div>
                 {{$users->links()}}
         </div>
        
