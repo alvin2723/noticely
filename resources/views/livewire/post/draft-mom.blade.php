@@ -22,7 +22,7 @@
                             
                             @endif
                         @elserole('Supervisor')
-                            @if($post->created_note == 0)
+                            @if($post->status == 0)
                             <div class="col-md-2 py-md-2 py-sm-3 text-primary text-center">
                                 <i class="fas fa-spinner fa-3x mb-2"></i>
                                 Waiting for Approval
@@ -57,12 +57,4 @@
         
     </div>
     
-  
-    {{-- <div class="col-lg-4 col-md-5 order-sm-1 col-sm-12 right-box "> --}}
-        
-        {{-- <a href="{{route('post.create-mom')}}" type="button" class="btn btn-primary btn-lg px-4"><i class="fas fa-plus" style="margin-right: 10px"></i>
-            Create MoM</a> --}}
-    {{-- </div> --}}
-    
-   
 </div>

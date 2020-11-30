@@ -39,7 +39,8 @@ class DraftDetailMom extends Component
         ]);
         MinuteOfMeeting::where('id', $this->mom_id)
             ->update([
-                'created_note' => 1
+                'created_note' => 1,
+                'status' => 1
             ]);
 
         session()->flash('message', 'Note Added.');
@@ -51,12 +52,12 @@ class DraftDetailMom extends Component
         if (Auth::user()->hasRole('Supervisor')) {
             MinuteOfMeeting::where('id', $this->mom_id)
                 ->update([
-                    'status' => 1
+                    'status' => 2
                 ]);
         } else {
             MinuteOfMeeting::where('id', $this->mom_id)
                 ->update([
-                    'status' => 2
+                    'status' => 3
                 ]);
             $this->createNotif();
         }
