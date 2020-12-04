@@ -60,7 +60,8 @@
             </div>
             <div class="card-body row px-5">
                 @foreach($users as $user)
-                    @if($user->isOnline())
+                    
+                    @if(Cache::has('user-is-online-' . $user->id_users))
                         <h5 class="col-md-8 text-primary">{{$user->name}}</h5>
                         <div class="col-md-4"><label class="badge badge-success">
                             online
