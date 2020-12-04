@@ -31,7 +31,7 @@ class CreateUser extends Component
             'email' => 'required|email',
             'password' => 'required|min:6',
             'alamat' => 'required|min:6',
-            'phone' => 'required|min:11',
+            'phone' => 'required|min:10',
             'role_id' => 'required',
             'division_id' => 'required',
 
