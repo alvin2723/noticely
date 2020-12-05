@@ -5,7 +5,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3 class="text-center"></h3>
+                        <h3 class="text-center">{{$users}}</h3>
                         <p class="text-center">User Registrations</p>
                     </div>
                     <div class="icon">
@@ -18,11 +18,11 @@
             <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3 class="text-center"></h3>
+                        <h3 class="text-center">{{$mom}}</h3>
                         <p class="text-center">Minute Of Meeting</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="ion ion-clipboard"></i>
                     </div>
                     <a href="{{route('admin.data-mom')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
