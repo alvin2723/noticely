@@ -33,8 +33,6 @@ class SendMail extends Mailable
     public function build()
     {
 
-        // $akses = $this->from($this->data['staff_email'])->subject('New Minute of Meeting Approval Request')
-        //         ->view('dynamic_email')->with('data', $this->data);
 
         $akses = $this->from($this->data['admin_email'])->subject('New Minute of Meeting Approval Request')
             ->view('dynamic_email')->with('data', $this->data);

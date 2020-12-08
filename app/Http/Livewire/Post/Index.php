@@ -23,8 +23,7 @@ class Index extends Component
             ->where('mom.status', '=', '3')->get();
         if (Auth::user()->hasRole('Staff')) {
             $users = Staff::where('id_users', Auth::id())->get();
-        }
-        if (Auth::user()->hasRole('Supervisor')) {
+        } else if (Auth::user()->hasRole('Supervisor')) {
 
             $supervisor =  Supervisor::where('id_users', Auth::id())->first();
             $users =  Staff::where('id_supervisor', $supervisor->id_supervisor)->get();

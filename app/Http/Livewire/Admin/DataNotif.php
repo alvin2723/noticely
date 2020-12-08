@@ -80,16 +80,7 @@ class DataNotif extends Component
             ->join('users', 'users.id', '=', 'mom.id_users')
             ->join('staff', 'staff.id_users', '=', 'users.id')
             ->select('notif.*', 'mom.title_mom', 'staff.name')->paginate(5);
-        // $staff = Staff::where('staff.id_users', Auth::id())->first();
-        // $supervisor = Supervisor::where('supervisor.id_supervisor', '=', $staff->id_supervisor)->first();
-        // $super_user = User::where('id', $supervisor->id_users)->first();
-        // $data = array(
-        //     'staff_name' => $staff->name,
-        //     'staff_email' => ->email,
-        //     'supervisor' => $super_user->email,
-        // );
 
-        // Mail::to($data['supervisor'])->send(new SendMail($data));
 
         return view('livewire.admin.data-notif', compact('notification'));
     }
