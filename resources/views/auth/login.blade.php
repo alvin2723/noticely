@@ -54,18 +54,14 @@
             
           </div>
         </div>
-  
         <div class="panels-container">
           <div class="panel left-panel">
-            <div class="content">
-               
-               
+            <div class="content">  
             </div>
             <img src="{{asset('image/log.svg')}}" class="image" alt="" />
           </div>
          
         </div>
       </div>
-  
 </body>
 

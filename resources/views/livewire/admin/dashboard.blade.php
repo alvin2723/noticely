@@ -5,7 +5,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3 class="text-center">{{$users}}</h3>
+                        <h3 class="text-center">{{$users-1}}</h3>
                         <p class="text-center">User Registrations</p>
                     </div>
                     <div class="icon">

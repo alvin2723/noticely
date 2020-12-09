@@ -3,7 +3,7 @@
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h1>Staff Report</h1>
+            <h1>Division Report</h1>
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -38,7 +38,7 @@
                             <tbody>
                                 @foreach ($division as $divisi)
                                     <tr>
-                                        <td>{{$divisi->id}}</td>
+                                        <td>{{$loop->index+1}}</td>
                                         <td>{{$divisi->division_name}}</td>
                                         <td>
                                             <div class="p-2">

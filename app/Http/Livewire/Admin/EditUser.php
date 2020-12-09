@@ -54,7 +54,6 @@ class EditUser extends Component
         $this->validateData();
 
         if ($this->userId) {
-
             $user = User::find($this->userId);
             if ($this->users->hasRole('Staff')) {
                 DB::table('staff')
@@ -64,10 +63,8 @@ class EditUser extends Component
                         'alamat' => $this->alamat,
                         'phone' => $this->phone,
                     ]);
-
                 //flash message
                 session()->flash('message', 'Data Updated.');
-
                 //redirect
                 return redirect()->route('admin.users');
             } else if ($this->users->hasRole('Supervisor')) {
@@ -78,10 +75,8 @@ class EditUser extends Component
                         'alamat' => $this->alamat,
                         'phone' => $this->phone,
                     ]);
-
                 //flash message
                 session()->flash('message', 'Data Updated.');
-
                 //redirect
                 return redirect()->route('admin.users-supervisor');
             } else {
@@ -96,7 +91,6 @@ class EditUser extends Component
                     ]);
                 //flash message
                 session()->flash('message', 'Data Updated.');
-
                 //redirect
                 return redirect()->route('admin.users-manager');
             }

@@ -49,7 +49,6 @@ class CreateUser extends Component
     }
     public function createStaff()
     {
-
         $this->createUser();
         $data = Staff::orderby('id_staff', 'DESC')->first();
         $staff_id = $data->id_staff;
@@ -70,7 +69,6 @@ class CreateUser extends Component
     {
         $this->createUser();
 
-
         $manager = Manager::where('division_id', $this->division_id)->first();
         $data = Supervisor::orderby('id_supervisor', 'DESC')->first();
         $supervisor_id = $data->id_supervisor;
@@ -89,21 +87,24 @@ class CreateUser extends Component
     }
     public function createManager()
     {
-        $this->createUser();
-
         $data = Manager::orderby('id_manager', 'DESC')->first();
         $manager_id = $data->id_manager;
         $manager_id++;
+        if ($data->division_id == $this->division_id) {
+            session()->flash('warning', 'There is already a Manager assigned in this Division, Please Change the Division!');
+        } else {
+            $this->createUser();
+            Manager::create([
+                'id_manager' => $manager_id,
+                'id_users' => $this->users->id,
+                'division_id' => $this->division_id,
+                'name' => $this->name,
+                'alamat' => $this->alamat,
+                'phone' => '62' . $this->phone
 
-        Manager::create([
-            'id_manager' => $manager_id,
-            'id_users' => $this->users->id,
-            'division_id' => $this->division_id,
-            'name' => $this->name,
-            'alamat' => $this->alamat,
-            'phone' => '62' . $this->phone
-
-        ]);
+            ]);
+            session()->flash('message', 'New Data Has Been Added');
+        }
     }
     public function store()
     {
@@ -129,7 +130,7 @@ class CreateUser extends Component
         } else if ($this->role_id == '4') {
 
             $this->createManager();
-            session()->flash('message', 'New Data Has Been Added');
+
 
             //redirect
             $this->resetInputFields();

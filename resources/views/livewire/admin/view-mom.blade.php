@@ -1,5 +1,4 @@
 <div>
-   
     <div class="card rounded shadow">
         <div class="card-body p-5">
             <h3 class="pb-4">Minute of Meeting Details</h3>
@@ -10,15 +9,13 @@
                             <td class="border-right blue-color"><h4>MOM Title</h4></td>
                             <td><h4>{{$data->title_mom}}</h4></td>
                             <td></td>
-                            <td></td>
-                            
+                            <td></td> 
                         </tr>
                         <tr class="text-center">
                             <td class="border-right blue-color"><h4>Date MOM</h4></td>
                             <td><h4>{{date('d-m-Y', strtotime($data->date_mom))}}</h4></td>
                             <td></td>
                             <td></td>
-                        
                         </tr>
                         <tr class="text-center" style="">
                             <td class="border-right blue-color"><h4>Start</h4></td>
@@ -62,7 +59,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                       
                             @foreach($attendee as $item)
                             <tr>
                                 {{-- <th scope="row">{{$loop->index}}</th> --}}

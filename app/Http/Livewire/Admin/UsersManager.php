@@ -15,23 +15,19 @@ class UsersManager extends Component
     {
 
         $user = User::find($userId);
-
-
         if ($user) {
             $manager = Manager::where('id_users', $user->id)->first();
-            $supervisor = Supervisor::where('id_manager', $manager->id_manager)->get();
+            $supervisor = Supervisor::where('id_manager', $manager->id_manager)->first();
             if ($supervisor) {
                 session()->flash('warning', 'Please delete the Supervisor that have this ManagerID!');
                 return redirect()->route('admin.users-supervisor');
             } else {
                 Manager::where('id_users', $user->id)->delete();
                 $user->delete();
+                //flash message
                 session()->flash('message', 'Data Deleted.');
             }
         }
-
-        //flash message
-
         //redirect
         return redirect()->route('admin.users-manager');
     }

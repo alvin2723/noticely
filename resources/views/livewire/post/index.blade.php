@@ -2,7 +2,6 @@
 
     {{-- Nothing in the world is as soft and yielding as water. --}}
     <div class="col-md-7 col-sm-12">
-       
         @foreach($posts as $post)
         <div class="card rounded shadow left-box p-md-4">
             <div class="card-body">
@@ -31,8 +30,6 @@
         </div>
         @endforeach        
     </div>
-    
-  
     <div class="col-md-4 col-sm-12 right-box">
         @role('Staff')
         <a href="{{route('post.create-mom')}}" type="button" class="btn btn-primary btn-lg btn-create" >
