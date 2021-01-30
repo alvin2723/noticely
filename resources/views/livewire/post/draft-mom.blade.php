@@ -19,7 +19,6 @@
                                     <i class="fas fa-exclamation-circle fa-3x mb-2"></i>
                                     pending
                                 </div>
-                            
                             @endif
                         @elserole('Supervisor')
                             @if($post->status == 0)
@@ -34,7 +33,6 @@
                                 Waiting Last Approval
                             </div>
                         @endrole
-                    
                     <div class="col-md-10 col-sm-12">
                         <h3  class="text-capitalize">{{$post->title_mom}}</h3>
                         <p class="text-muted text-capitalize" style="font-size:16px">{{$post->objective_mom}}</p>
@@ -47,7 +45,6 @@
                                 <a href="{{route('post.draft-detail-mom', $post->id)}}" type="button" class="btn btn-primary text-right px-4 btn-detail"><span>Details</span>
                                 </a>
                             </div>
-
                         </div>
                     </div>
                 </div>

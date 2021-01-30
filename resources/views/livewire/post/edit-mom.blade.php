@@ -12,9 +12,6 @@
                     <input type="date" class="form-control" id="exampleFormControlInput2" placeholder="12/07/2020" wire:model="date_mom" value="date_mom" readonly>
                    
                 </div>
-                <div class="form-group">
-                    
-                </div>
                 <div class="form-group form-row">
                     <div class="col">
                         <label for="exampleFormControlInput3">Start:</label>

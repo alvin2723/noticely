@@ -83,16 +83,16 @@
     <div class="col-lg-4 col-md-5 right-box">
         <div class="card rounded shadow">
             @role('Staff')
-            @if($data->created_note == '1')
-            <div class="card-header blue-color">
-                   
-                <h4  class="text-center">Notes For Change :</h4>
-            </div>
-            @endif
+                @if($data->created_note == '1')
+                    <div class="card-header blue-color">
+                        
+                        <h4  class="text-center">Notes For Change :</h4>
+                    </div>
+                @endif
             @else
-            <div class="card-header blue-color">
-                <h4 class="text-center">Will You Approve This MOM?</h4>
-            </div>
+                <div class="card-header blue-color">
+                    <h4 class="text-center">Will You Approve This MOM?</h4>
+                </div>
             @endrole
             
             <div class="card-body">
@@ -108,8 +108,6 @@
                     <div class="row">
                         <div class="col-6 p-2">
                             <button wire:click="approve()" type="button" class="btn btn-block btn-lg btn-success">APPROVE</button>
-                           
-                            {{-- <a href="" type="button" class="btn btn-block btn-lg btn-success">APPROVE</a> --}}
                         </div>
                         <div class="col-6 p-2">
                             <button type="button" class="btn btn-block btn-lg btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
@@ -122,12 +120,9 @@
                     <div class="row">
                         <div class="col-6 p-2">
                             <button type="button" class="btn btn-block btn-lg btn-outline-success" data-toggle="modal" data-target="#exampleModalApprove">APPROVE</button>
-                            {{-- <button wire:click="approve()" type="button" class="btn btn-block btn-lg btn-success">APPROVE</button> --}}
-                        
-                            {{-- <a href="" type="button" class="btn btn-block btn-lg btn-success">APPROVE</a> --}}
                         </div>
                         <div class="col-6 p-2">
-                            <button type="button" class="btn btn-block btn-lg btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
+                            <button type="button" class="btn btn-block btn-lg btn-outline-success" data-toggle="modal" data-target="#exampleModalApprove">
                                 DECLINE
                             </button>
                             
@@ -145,7 +140,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-danger" id="exampleModalLongTitle">Note for Change:</h5>
-                    
                 </div>
                 <form>
                     <div class="modal-body">
@@ -160,9 +154,6 @@
                         <button wire:click.prevent="store_note()" type="submit" class="btn btn-primary">Create Note</button>
                     </div>
                 </form>
-                   
-
-                
             </div>
         </div>
     </div>
@@ -171,7 +162,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-danger" id="exampleModalLongTitle">Send Notification of Approval to Staff</h5>
-                    
                 </div>
                 <form>
                     <div class="modal-body">
@@ -188,7 +178,6 @@
                                         wire:model="notif" name="notif" value="wa" >WhatsApp
                                     </label>
                                 </div>
-                              
                         </div>
                         
                     </div>
@@ -197,9 +186,6 @@
                         <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
                     </div>
                 </form>
-                   
-
-                
             </div>
         </div>
     </div>
@@ -208,22 +194,4 @@
             $('#exampleModal').modal('hide');
         });
     </script>
-    {{-- <div class="col-lg-4 col-md-5 right-box">
-        <div class="card p-3">
-            <div class="card-body">
-                <h4 class="text-center">Will You Approve This MOM?</h4>
-                <div class="row mt-4">
-                    <div class="col-6 text-center">
-                        <a href="{{route('post.create-mom')}}" type="button" class="btn btn-primary btn-sm p-2">
-                            Approve MOM</a>
-                    </div>
-                    <div class="col-6 text-center">
-                        <a href="{{route('post.create-mom')}}" type="button" class="btn btn-primary btn-sm p-2">
-                            Reject MOM</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div> --}}
 </div>

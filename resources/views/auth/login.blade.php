@@ -22,7 +22,6 @@
     <div class="container">
         
         <div class="forms-container">
-        <img src="{{asset('image/logo.png')}}" alt="" height="100px" class="logo-image">
           <div class="signin-signup">
           
             <form class="form_right" method="POST" action="{{ route('login') }}">
